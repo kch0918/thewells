@@ -1,0 +1,28 @@
+#container.sub_page.team_upload .contwrap .cont02.tp .lt {
+	padding: 49px 46px 0;
+}
+#container.sub_page.team_upload .contwrap .cont02.tp .rt {
+	padding: 30px 33px 0;
+}
+#container.sub_page.team_upload .contwrap .cont02.bt {
+	border:none;
+}
+#container.sub_page.team_upload .contwrap .cont02.bt .rt {
+	padding: 10px 33px 30px;
+}
+#container.sub_page.team_upload .contwrap .cont02 .rt .filebox.team_img .txtbox .file_del {
+	width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background: url(/img/admin/file_del_icon.png) no-repeat;
+    margin-top: 5px;
+}
+
+#container.sub_page.team_upload .contwrap .cont06 .rt,
+#container.sub_page.team_upload .contwrap .cont07 .rt {
+	padding-right: 54px !important;
+}
+#container.sub_page.team_upload .contwrap .cont06 .txtbox,
+#container.sub_page.team_upload .contwrap .cont07 .rt .txt {
+	width: 100% !important;
+}

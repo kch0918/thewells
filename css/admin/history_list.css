@@ -1,0 +1,121 @@
+/*history 관리 페이지*/
+#container.sub_page.his_list .info_txt {
+	padding: 51px 61px 0;
+}
+#container.sub_page.his_list {
+	height: auto;
+}
+
+#container.sub_page.his_list .contwrap .wrap_inner {
+	background: #fff;
+	padding: 38px 33px;
+	max-height: 500px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#container.sub_page.his_list .contwrap .wrap_inner .contbox .cont01 {
+	border-bottom: 1px solid #707070;
+    padding-bottom: 12px;
+}
+#container.sub_page.his_list .contwrap .wrap_inner .contbox .cont01 > span.inb {
+	margin-left: 14px;
+}
+#container.sub_page.his_list .contwrap .wrap_inner .contbox .cont02 > ul {
+	max-height: 483px;
+    overflow-y: auto;
+}
+
+#container.sub_page.his_list .contwrap .wrap_inner .contbox .cont02 > ul::-webkit-scrollbar {
+    width: 3px;
+}
+#container.sub_page.his_list .contwrap .wrap_inner .contbox .cont02 > ul::-webkit-scrollbar-thumb {
+    background-color: #062459;
+}
+#container.sub_page.his_list .contwrap .wrap_inner .contbox .cont02 > ul::-webkit-scrollbarr-track {
+    background-color: #fafafa;
+}
+  
+#container.sub_page.his_list .contwrap .wrap_inner .contbox .cont02 > ul .list {
+	display:flex;
+	justify-content: space-between;
+	padding: 20px 26px;
+    background: #fbfbfb;
+    margin-top: 22px;
+    position: relative;
+}
+#container.sub_page.his_list .contwrap .wrap_inner .contbox .cont02 > ul .list + .list {
+	margin-top: 15px;
+}
+#container.sub_page.his_list .contwrap .wrap_inner .contbox .cont02 > ul .list .date {
+	margin-right: 10px;
+}
+#container.sub_page.his_list .contwrap .wrap_inner .contbox .cont02 > ul .list .date > span > input {
+	width: 25px; height: 25px;
+	border: 1px solid #eeeeee;	
+}
+#container.sub_page.his_list .contwrap .wrap_inner .contbox .cont02 > ul .list .date > p {
+	margin-top: 18px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -0.8px;		
+}
+#container.sub_page.his_list .contwrap .wrap_inner .contbox .cont02 > ul .list .ko_cont {
+	width: 41.4%;
+}
+#container.sub_page.his_list .contwrap .wrap_inner .contbox .cont02 > ul .list .bar {
+	width: 1px;
+    min-height: 118px;
+    background: #eee;
+    margin: 0 10px;
+}
+#container.sub_page.his_list .contwrap .wrap_inner .contbox .cont02 > ul .list > div > p.tit {
+	font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -0.8px;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 11px;
+}
+#container.sub_page.his_list .contwrap .wrap_inner .contbox .cont02 > ul .list > div  > p.txt {
+	font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.8px;
+    padding-top: 9px;
+}
+#container.sub_page.his_list .contwrap .wrap_inner .contbox .cont02 > ul .list .en_cont .txt {
+	line-height: 1.38;
+    padding-top: 11px;
+}
+#container.sub_page.his_list .contwrap .cont03 {
+	max-width: 1370px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 50px 0 0;
+}
+#container.sub_page.his_list .contwrap .cont03 .del_btn {
+	margin-top: 27px;
+}
+#container.sub_page.his_list .contwrap .cont03 .del_btn > a {
+	font-size: 15px;
+    font-weight: 500;
+    line-height: 1.47;
+    letter-spacing: -0.75px;
+    border-bottom: 1px solid #ff0000;
+    color: #ff0000;
+    cursor: pointer;
+}
+#container.sub_page.his_list .contwrap .cont03 .his_btn {
+	width: 230px;
+    background: #062459;
+    text-align: center;
+    float: right;
+}
+#container.sub_page.his_list .contwrap .cont03 .his_btn > a {
+	display: block;
+    color: #fff;
+    line-height: 70px;
+    font-size: 15px;
+    letter-spacing: -0.75px;
+}
+

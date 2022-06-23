@@ -1,0 +1,57 @@
+@media screen and (max-width:1440px) {
+	#partners .cont-wr ul li {width: 25%;}
+	#partners .cont-wr ul li:nth-child(n+6) {border-top: none;}
+	#partners .cont-wr ul li:nth-child(n+5) {border-top: 1px solid #dfecf4;}
+	#partners .cont-wr ul li:nth-child(n+5):hover {border-color: #0567a6;}
+}
+@media screen and (max-width:1280px) {
+	#partners .cont-wr ul li {width: 33.33%;}
+	#partners .cont-wr ul li:nth-child(n+5) {borde-topr: none;}
+	#partners .cont-wr ul li:nth-child(n+4) {border-top: 1px solid #dfecf4;}
+	#partners .cont-wr ul li:nth-child(n+4):hover {border-color: #0567a6; border: 1px solid #0567a6;}
+}
+
+/* 모바일 */
+@media screen and (max-width:768px) {
+	#partners .sub-tit-wr p.sub-txt {width: 100%;}
+	#partners .cont-wr {padding: 0; height: 100%; overflow-y: initial;}
+	#partners .cont-wr ul li {max-height: 10rem; border-bottom-color: #dfecf4; border-top-color: #dfecf4;}
+/* 	#partners .cont-wr ul li:hover {border-color: #dfecf4; border-left-color: transparent;} */
+	#partners .cont-wr ul li:hover {border: 1px solid #dfecf4 !important; border-left-color: transparent !important;}
+	#partners .cont-wr ul li button {min-height: 10rem; padding: 0 5rem; text-align: center; max-height: 10rem; border: none;}
+	#partners .cont-wr ul li button img {max-height: 5rem; /* height: 100%; */ display: block; width: auto; max-width: 100%; max-width: 60%; margin: 0 auto; border: none; font-size: 1.1rem;}
+	#partners .cont-wr ul li button span {display: none;}
+	
+	.partners .popup-wr .tag-wr .tag-it {font-size: 1.1rem; padding: .3rem .8rem;}
+	.partners .popup-wr .base-wr {margin-top: 1.5rem;}
+	.partners .popup-wr .base-wr .left-wr {width: 100%; height: 13.5rem;}
+	.partners .popup-wr .base-wr .left-wr img {max-width: 15rem;}
+	.partners .popup-wr .base-wr .right-wr {margin: 0; margin-top: 1.5rem; width: 100%;}
+	.partners .popup-wr .base-wr .right-wr.no-href {vertical-align: top;}
+	.partners .popup-wr .base-wr .right-wr .c-tit {font-size: 1.6rem;}
+	.partners .popup-wr .base-wr .right-wr .c-year {margin-top: .8rem; margin-bottom: 1.8rem;}
+	.partners .popup-wr .base-wr .right-wr .c-year .year-tit {font-size: 1.3rem;}
+	.partners .popup-wr .base-wr .right-wr .c-year .year-cont {font-size: 1.4rem; padding-left: 0.8rem; padding-right: 1rem;}
+	.partners .popup-wr .base-wr .right-wr .c-year .year-btn {font-size: 1.1rem; font-weight: 300; padding: 0.4rem 0.6rem; line-height: 1.1; display: inline-block;}
+	.partners .popup-wr .base-wr .right-wr .c-href-wr {padding: 0;}
+	.partners .popup-wr .base-wr .right-wr .c-href-wr .c-href {font-size: 1.2rem;}
+	.partners .popup-wr .base-wr .right-wr .c-href-wr .c-href::after {width: 1.6rem; height: 0.8rem; top: 55%; right: -2.4rem;}
+	.partners .popup-wr .popup-tit {font-size: 1.4rem; margin-top: 2.8rem;}
+	.partners .popup-wr .mid-wr .info-txt {font-size: 1.3rem; margin-top: 1rem;}
+	.partners .popup-wr .bot-wr .news-list {width: 100%;}
+	.partners .popup-wr .bot-wr .news-list .news-cont {padding: 1.5rem;}
+	.partners .popup-wr .bot-wr .news-list .cont {font-size: 1.3rem; letter-spacing: -0.025rem; margin-bottom: 0.2rem; max-height: 2rem;}
+	.partners .popup-wr .bot-wr .news-list .date {font-size: 1.2rem; letter-spacing: 0.025rem;}
+	.partners .popup-wr .bot-wr .news-list button {opacity: .6; top: 0;}
+	.partners .popup-wr .bot-wr .news-list .slick-prev {margin-right: 2rem;}
+}
+
+@media screen and (max-width:500px) {
+	#partners .cont-wr ul li button {padding: 0;}
+}
+
+@media screen and (max-width:430px) {
+}
+
+@media screen and (max-width:320px) {
+}

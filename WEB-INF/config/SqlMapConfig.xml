@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<mappers>
+		<!-- web -->
+		<mapper resource="resource/web/mainMapper.xml" />
+		<mapper resource="resource/web/ptnrMapper.xml" />
+		<mapper resource="resource/web/teamMapper.xml" />
+		<mapper resource="resource/web/newsMapper.xml" />
+		<mapper resource="resource/web/aboutusMapper.xml" />
+<!-- 		<mapper resource="resource/admin/userMapper.xml" />
+		<mapper resource="resource/admin/aboutusMapper.xml" />
+		<mapper resource="resource/admin/partnersMapper.xml" /> -->
+		<!-- admin -->
+		<mapper resource="resource/admin/mainMapper.xml" />
+		<mapper resource="resource/admin/userMapper.xml" />
+		<mapper resource="resource/admin/aboutusMapper.xml" />
+		<mapper resource="resource/admin/partnersMapper.xml" />
+		<mapper resource="resource/admin/teamMapper.xml" />
+		<mapper resource="resource/admin/newsMapper.xml" />
+	</mappers>
+</configuration> 

@@ -1,0 +1,96 @@
+.popup-wr {position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: -9999; opacity: 0;}
+.popup-wr.on {z-index: 9999; opacity: 1;}
+.popup-wr .bg {background: rgba(0,0,0,.65); width: 100vw; height: 100vh;}
+.popup-wr .inner {position: absolute; background: #fff; width: 70%; height: auto; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 61.7rem; max-height: 57rem; padding: 5rem;}
+.popup-wr .close {top: 0; right: 0; padding: 3rem;}
+.popup-wr .pop-tit {font-size: 3.5rem; font-weight: normal; line-height: 1; letter-spacing: normal; color: #0567a6; padding-bottom: 5rem;}
+/* button */
+.popup-wr .arrow-wr {top: 50%; left: 0; transform: translateY(-50%); width: 100%;}
+.popup-wr .arrow-wr .arrow-ct {position: absolute; top: 50%; opacity: .3; transition: opacity .5s;}
+.popup-wr .arrow-wr .arrow-ct .arrow {width: 6.6rem; height: 6.6rem; border-radius: 50%; line-height: 6.6rem; text-align: center; border: 1px solid #fff; float: left; font-size: 0;}
+.popup-wr .arrow-wr .arrow-ct.left {left: 0; transform: translate(calc(-100% - 3rem), -50%); -ms-transform: translateX(100%) translateX(-220%) translateY(-50%);}
+.popup-wr .arrow-wr .arrow-ct.left .arrow {float: right;}
+.popup-wr .arrow-wr .arrow-ct.right {right: 0; transform: translate(calc(100% + 3rem), -50%); -ms-transform: translateX(100%) translateX(3rem) translateY(-50%);}
+.popup-wr .arrow-wr .arrow-ct.right .arrow {text-indent: 0.4rem;}
+.popup-wr .arrow-wr .arrow-ct .arrow-txt {font-size: 1.4rem; line-height: 6.5rem; letter-spacing: -0.03rem; color: #fff; display: block; padding: 0 1.5rem; float: left;}
+.popup-wr .arrow-wr .arrow-ct:hover {opacity: 1;}
+
+
+/* contact form */
+.contact-form .inner {max-width: 78rem !important; max-height: none !important; width: 80% !important; height: 90% !important; max-height: none !important; padding: 0;}
+.contact-form .inner .inner-scroll {overflow: hidden; padding: 7rem 6rem 0; height: 100%; overflow-y: scroll;}
+.contact-form .form-wr .form-li strong {font-size: 2.2rem; font-weight: normal; line-height: 1.36; letter-spacing: -0.1rem; color: #000; padding-bottom: 1rem; display: block;}
+.contact-form .form-wr .form-li strong + * {margin-bottom: 3rem;}
+.contact-form .form-wr .form-li strong + * > * {line-height: 4rem;}
+.contact-form .form-wr .form-li strong + * > span {font-size: 1.6rem; color: #666; padding: 0 .3rem;}
+.contact-form .form-wr .form-li.email input {width: 14rem;}
+.contact-form .form-wr .form-li.phone input {width: 9.8rem;}
+.contact-form .form-wr .form-li .bd {border: none; border-bottom: 1px solid #000; font-size: 1.6rem; line-height: 2.5; letter-spacing: -0.04rem; color: #666; width: 100%; text-align: left;}
+.contact-form .form-wr .form-li .bd:not(textarea) {height: 4rem;}
+.contact-form .form-wr .form-li .bd::placeholder {color: #000;}
+.contact-form .form-wr .form-li .sel-wr button {background: url(/img/icon/select_box_ico.png) no-repeat right center;}
+.contact-form .form-wr .form-li .sel-wr .select-drop {position: absolute; width: 100%; bottom: 0; left: 0;}
+.contact-form .form-wr .form-li .sel-wr .select-list {width: 100%; top: 0; left: 0; position: absolute; background: #f7f7f7; display: none;}
+.contact-form .form-wr .form-li .sel-wr .select-list li {font-size: 1.6rem; color: #666; line-height: 1.8; letter-spacing: -0.08rem; padding: .5rem 0; transition: all 0.5s;}
+.contact-form .form-wr .form-li .sel-wr .select-list li:first-child {padding-top: 1rem;}
+.contact-form .form-wr .form-li .sel-wr .select-list li:last-child {padding-bottom: .7rem;}
+.contact-form .form-wr .form-li .sel-wr .select-list li:hover {color: #0567a6;}
+.contact-form .form-wr .form-li .policy-wr {margin-bottom: 0;}
+.contact-form .form-wr .form-li .policy-wr .privacy-policy {font-size: 1.5rem; line-height: 1.7; letter-spacing: -0.07rem; color: #666; padding: 2rem; border: 1px solid #ddd; margin-top: 1rem; max-height: 11rem; overflow-y: auto; margin-bottom: 2.5rem;}
+.contact-form .form-wr .form-li .policy-wr input + label {font-size: 1.6rem; line-height: 1.7; letter-spacing: -0.08rem; color: #000; padding-left: 4rem; word-break: keep-all; display: block; background-position: top 5px left;}
+.contact-form .btn-box-wr {margin: 4rem 0 7rem; text-align: center;}
+
+/* file */
+.filebox {position: relative; border: none !important;}
+.filebox .upload {display: none;}
+.filebox .upload_name {height: auto; border: none; padding: 0; width: calc(100% - 25px); line-height: 30px; color: #aaaaaa;}
+.filebox .file_del { width: 20px; height: 20px; background: url(/img/admin/file_del_icon.png) no-repeat; position: absolute; top: 50%; right: 2.5rem; transform: translateY(-50%);}
+.contact-form .form-wr .form-li .file-wr .addFile {background: url(/img/icon/upload_ico.png) no-repeat right center / 1.4rem; text-indent: -9999px; height: 2.1rem; position: absolute; top: 50%; right: 0; transform: translateY(-50%); width: 100%;}
+
+
+/* partners */
+.partners .popup-wr .tag-wr {font-size: 0;}
+.partners .popup-wr .tag-wr .tag-it {display: inline-block; vertical-align: top; font-size: 1.2rem; font-weight: normal; line-height: 1; letter-spacing: normal; color: rgba(0, 23, 38, 0.9); border: 1px solid rgba(0,23,38,.5); padding: .4rem 1rem; border-radius: 1rem;}
+.partners .popup-wr .tag-wr .tag-it:not(:last-child) {margin-right: .5rem;}
+.partners .popup-wr .base-wr {margin-top: 1.8rem;}
+/* .partners .popup-wr .base-wr .left-wr {width: 100%; height: 100%; max-width: 26rem; max-height: 14rem; background: rgba(5,103,166,.08);} */
+.partners .popup-wr .base-wr .left-wr {width: 26rem; height: 14rem; background: rgba(5,103,166,.08); position: relative; font-size: 1.6rem;}
+.partners .popup-wr .base-wr .left-wr img {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); max-width: 13rem; max-height: 7.5rem;}
+.partners .popup-wr .base-wr .right-wr {margin-top: 0.3rem; margin-left: 2rem; width: calc(100% - 28.1rem);}
+.partners .popup-wr .base-wr .right-wr .c-tit {font-size: 2.6rem; font-weight: normal; line-height: 1.3; letter-spacing: -.06rem; word-break: break-word;}
+/* .partners .popup-wr .base-wr .right-wr .c-tit.long-txt {font-size: 2.3rem;} */
+.partners .popup-wr .base-wr .right-wr .c-year {margin-top: 1.3rem; margin-bottom: 2rem;}
+.partners .popup-wr .base-wr .right-wr .c-year .year-tit {font-size: 1.4rem; line-height: 1; letter-spacing: -.03rem;}
+.partners .popup-wr .base-wr .right-wr .c-year .year-cont {font-size: 1.4rem; line-height: 1; letter-spacing: normal; color: #333; padding-left: 1.3rem; padding-right: 1.5rem;}
+.partners .popup-wr .base-wr .right-wr .c-year .year-btn {font-size: 1.2rem; line-height: 1; font-weight: normal; letter-spacing: -0.03rem; color: #fff; background: #0567a6; padding: 0.3rem 0.7rem .4rem 0.5rem; vertical-align: 1px; border: none;}
+.partners .popup-wr .base-wr .right-wr .c-href-wr {padding-top: 1rem;}
+.partners .popup-wr .base-wr .right-wr .c-href-wr .c-href {color: #0567a6; font-size: 1.4rem; position: relative; cursor: pointer;}
+.partners .popup-wr .base-wr .right-wr .c-href-wr .c-href:after {display: block; position: absolute; content: ''; width: 2.3rem; height: 1.1rem; background: url(/img/popup/popup_arrow.png) no-repeat top left / 100%; top: 50%; right: -3rem; transform: translateY(-50%);}
+.partners .popup-wr .base-wr .right-wr.no-href {vertical-align: -10rem;}
+.partners .popup-wr .base-wr .right-wr.no-href #url {display: none;}
+.partners .popup-wr .popup-tit {font-size: 2.2rem; font-weight: normal; line-height: 1; letter-spacing: -0.05rem; color: #000; margin-top: 4rem;}
+.partners .popup-wr .mid-wr .info-txt {font-size: 1.8rem; line-height: 1.5; letter-spacing: -0.045rem; color: #666; margin-top: 1.2rem;}
+.partners .popup-wr .bot-wr {position: relative;}
+.partners .popup-wr .bot-wr .news-list {width: 51.6rem; border: 1px solid rgba(0,0,0,.1); margin-top: 1.5rem;}
+.partners .popup-wr .bot-wr .news-list button {position: absolute; top: 0; right: 0; text-indent: -9999px; width: 1rem; height: 1.5rem; transform: translateY(-100%); padding-bottom: 3rem;}
+.partners .popup-wr .bot-wr .news-list button:after {position: absolute; content: ''; display: block; width: .8rem; height: 1.5rem; background: url(/img/popup/slide_arrow_next.png) no-repeat top left / 100%; top: 0; left: 0;}
+.partners .popup-wr .bot-wr .news-list .slick-prev {margin-right: 3rem;}
+.partners .popup-wr .bot-wr .news-list .slick-prev:after {background-image: url(/img/popup/slide_arrow_prev.png);}
+.partners .popup-wr .bot-wr .news-list .news-cont {padding: 2.7rem 3rem;}
+.partners .popup-wr .bot-wr .news-list .cont {font-size: 1.8rem; line-height: 1.5; letter-spacing: -0.045rem; color: #000; display: block; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; margin-bottom: 0.5rem; max-height: 3rem;}
+.partners .popup-wr .bot-wr .news-list .cont * {text-overflow: ellipsis; overflow: hidden; white-space: nowrap; margin-bottom: 0.5rem; max-height: inherit;}
+.partners .popup-wr .bot-wr .news-list .date {font-size: 1.4rem; line-height: 1.5; letter-spacing: 0.035rem; color: #666;}
+
+
+/* team */
+.team .popup-wr .inner {width: 80%; max-width: 102rem; max-height: 50rem;}
+.team .popup-wr .left-wr {width: 41rem; height: 41rem; background: #deebf3; position: relative;}
+.team .popup-wr .left-wr .tag-box {padding: 2rem;}
+.team .popup-wr .left-wr .tag-box .tag {font-size: 1.4rem; font-style: normal; line-height: 1; letter-spacing: normal; color: #0567a6; display: block; padding-bottom: 1rem;} 
+.team .popup-wr .left-wr .img-box {position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); min-height: 40rem; height: 100%; max-height: 40rem; width: 100%; text-align: center;} 
+.team .popup-wr .left-wr .img-box img {width: auto; height: 100%;} 
+.team .popup-wr .right-wr {margin-left: 3rem; width: calc(100% - 45rem); max-height: 41.5rem;} 
+.team .popup-wr .right-wr p.tit {font-size: 2.6rem; font-weight: normal; line-height: 1.3; letter-spacing: -0.055rem; color: #000; padding-bottom: 0.5rem;} 
+.team .popup-wr .right-wr > div:not(:first-child) p.tit {margin-top: 2rem; font-size: 2.2rem;} 
+.team .popup-wr .right-wr p.txt {font-size: 1.6rem; line-height: 1.6; letter-spacing: normal; color: rgba(102, 102, 102, 0.8); padding-left: 3px; position: relative;}
+.team .popup-wr .right-wr .dot p.txt {padding-left: 1rem;}

@@ -1,0 +1,30 @@
+#container.team_list .top_cont .search_input .drop_box.show .contbox {
+	padding: 25px 0 0;
+}
+#container.team_list .top_cont .search_input .drop_box.show .btn_wrap .btn {
+	height: auto;
+}
+#container.team_list .contwrap .list-container .list-table .tb_div > tr > td:nth-child(1) {
+	width: 2%;
+}
+#container.team_list .contwrap .list-container .list-table .tb_div > tr > td:nth-child(2) {
+	width: 10%;
+}
+#container.team_list .contwrap .list-container .list-table .tb_div > tr > td:nth-child(3) {
+	width: 32%;
+}
+#container.team_list .contwrap .list-container .list-table .tb_div > tr > td:nth-child(4) {
+	width: 19%;
+}
+#container.team_list .contwrap .list-container .list-table .tb_div > tr > td:nth-child(5) {
+	width: 11%;
+}
+#container.team_list .contwrap .list-container .list-table .tb_div > tr > td:nth-child(6) {
+	width: 12%;
+}
+#container.team_list .contwrap .list-container .list-table .tb_div > tr > td:nth-child(7) {
+	width: 12%;
+}
+#container.team_list .contwrap .list-container .list-table .tb_div > tr > td:nth-child(8) {
+	width: 5%;
+}

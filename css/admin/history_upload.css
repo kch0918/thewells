@@ -1,0 +1,89 @@
+/*history 등록 페이지*/
+#container.sub_page.his_upload .info_txt {
+	padding: 51px 61px 0;
+}
+#container.sub_page.his_upload .contwrap .cont {
+	display:flex;
+}
+#container.sub_page.his_upload .contwrap .cont .lt {
+	width: 18.2%;
+	background: #fbfbfb;
+	padding: 30px 46px 62px;
+}
+#container.sub_page.his_upload .contwrap .cont:nth-child(1) .lt {
+	padding-top: 37px;
+}
+#container.sub_page.his_upload .contwrap .cont .lt .tit {
+	font-size: 16px;
+    letter-spacing: -0.8px;
+}
+#container.sub_page.his_upload .contwrap .cont .rt {
+	width: 100%;
+	background: #fff;
+	padding:30px 33px;
+}
+#container.sub_page.his_upload .contwrap .cont .rt > span > input {
+	width: 21.5%;
+    height: 55px;
+    border: 1px solid #ececec;
+    padding-left: 2.7%;
+    margin-right: 7px;
+    font-size: 16px;
+    letter-spacing: -0.8px;
+    color: #aaa;
+}
+#container.sub_page.his_upload .contwrap .cont .rt > span > select {
+	width: 12.2%;
+    height: 55px;
+    padding:0 2.7%;
+    font-size: 16px;
+    letter-spacing: -0.8px;
+    color: #aaa;
+    border: 1px solid #ececec;
+}
+
+#container.sub_page.his_upload .contwrap .cont02 {
+	border-top: 1px solid #f1f1f1;
+}
+#container.sub_page.his_upload .contwrap .cont02 .lt.mt .tit {
+	margin-top: 15px;
+}
+#container.sub_page.his_upload .contwrap .cont02 .rt {
+	padding: 30px 33px;
+}
+#container.sub_page.his_upload .contwrap .cont02 .rt .txt > textarea {
+	width: 89.4%;
+    height: 485px;
+    resize: none;
+    border: 1px solid #ececec;
+    padding: 15px 30px;
+    font-size: 16px;
+    letter-spacing: -0.8px;
+    color: #aaa;
+}
+#container.sub_page.his_upload .contwrap .cont02.en .rt {
+	padding-bottom: 47px;
+}
+#container.sub_page.his_upload .contwrap .btnset {
+	display:flex;
+	justify-content: center;
+	padding: 47px 0 0;
+}
+#container.sub_page.his_upload .contwrap .btnset .his_btn {
+	width: 230px;
+    border: 1px solid #062459;
+    text-align: center;
+}
+#container.sub_page.his_upload .contwrap .btnset .his_btn > a {
+	display: block;
+	line-height: 70px;
+	font-size: 15px;
+    letter-spacing: -0.75px;
+}
+#container.sub_page.his_upload .contwrap .btnset .his_btn.blue {
+	background: #062459;
+	margin-left: 26px;
+}
+#container.sub_page.his_upload .contwrap .btnset .his_btn.blue > a {
+	color: #fff;
+}

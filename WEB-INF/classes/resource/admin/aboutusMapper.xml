@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="/admin/aboutusMapper">
+	
+	<!-- 히스토리 조회 -->
+	<select id="getHisList" parameterType="hashmap" resultType="hashmap">
+		select * from tbl_history order by year desc,month desc
+	</select>
+	
+	<!-- 마지막 수정 조회 -->
+	<select id="getHisdateList" parameterType="hashmap" resultType="hashmap">
+		select DATE_FORMAT(edit_date,'%Y-%m-%d %T') AS edit_date2 from tbl_history order by edit_date desc limit 1
+	</select>
+	
+	<!-- 히스토리 카운트 -->
+	<select id="getHisListCount" parameterType="hashmap" resultType="hashmap">
+		select count(*) as CNT from tbl_history
+	</select>
+	
+	<!-- 히스토리 등록 -->
+	<insert id="insHistory" parameterType="hashmap">
+		INSERT INTO tbl_history 
+			(
+		 	  history_idx,		 year,		 	month,		 	 conts_ko, 		       conts_en, 		     submit_date,			edit_date
+			 )
+		values
+			(
+			  (SELECT idx from tbl_history_year WHERE year = '${year}' limit 1),	'${year}', 		'${month}',	 	'${conts_ko}',	 	  '${conts_en}',     	  now() + 0,			now()+0
+			 )
+	</insert>
+	
+	<!-- 히스토리 등록 (중복년도 없을떄) -->
+	<insert id="insHistory_idx" parameterType="hashmap">
+		INSERT INTO tbl_history 
+			(
+		 	  history_idx,		 year,		 	month,		 	 conts_ko, 		       conts_en, 		     submit_date,			edit_date
+			 )
+		values
+			(
+			  (select MAX(idx) as idx FROM tbl_history_year),	'${year}', 		'${month}',	 	'${conts_ko}',	 	  '${conts_en}',     	  now() + 0,			now()+0
+			 )
+	</insert>
+	
+	<!-- 히스토리 년도 등록 -->
+	<insert id="insHistory_year" parameterType="hashmap">
+		INSERT INTO tbl_history_year 
+			(
+		 	   year,	    submit_date
+			 )
+		values
+			(
+			 '${year}', 	 now()+0
+			 )
+	</insert>
+	
+	<!-- 히스토리  년도 조회-->
+	<select id="getOneHistory_year" parameterType="hashmap" resultType="hashmap">
+		SELECT year from tbl_history_year where year = '${year}' limit 1
+	</select>
+	
+	<!-- 히스토리 수정 -->
+	<update id="upHistory" parameterType="hashmap">
+		UPDATE tbl_history 
+		set
+			history_idx  =  (SELECT idx from tbl_history_year WHERE year = '${year}'),
+			year 		 =  '${year}',
+			month 	 	 =  '${month}',
+			conts_ko 	 =  '${conts_ko}',
+			conts_en   	 =  '${conts_en}',
+			edit_date	 =   now() + 0
+		where
+			idx = '${idx}'
+	</update>
+	
+	<!-- 히스토리  단일 조회-->
+	<select id="getOneHistoryList" parameterType="hashmap" resultType="hashmap">
+		SELECT *,DATE_FORMAT(edit_date,'%Y-%m-%d %T') AS edit_date2  from tbl_history where idx = '${idx}'
+	</select>
+	
+	<!-- 히스토리 삭제 -->
+	<delete id="delHistoryList" parameterType="hashmap">
+		delete from tbl_history where idx in (${idx})
+	</delete>
+	
+</mapper>

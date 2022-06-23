@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+/* reset */
+@import '/css/reset.css';
+@import '/css/layout.css';
+
+@import '/css/main.css';
+@import '/css/sub.css';
+@import '/css/popup.css';
+@import '/css/sub_common.css';
+
+@import '/css/responsive_main.css';
+@import '/css/responsive_about.css';
+@import '/css/responsive_partners.css';
+@import '/css/responsive_team.css';
+@import '/css/responsive_news.css';
+@import '/css/responsive.css';

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+	
+	xmlns:task="http://www.springframework.org/schema/task"
+	
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd  
+		
+		
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+		
+    <task:annotation-driven/>
+		
+	<!-- <context:component-scan base-package="com.lge.*" /> -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="/WEB-INF/config/system.properties"></property>
+	</bean>
+	
+	<!--  WEB   -->
+	
+	<!-- WEB main -->
+	<bean class="controller.MainController"/>
+	
+	<!-- WEB about-->
+	<bean class="controller.AboutUsController"/>
+	
+	<!-- WEB partners-->
+	<bean class="controller.PartnersController"/>
+	
+	<!-- WEB team -->
+	<bean class="controller.TeamController"/>
+	
+	<!-- WEB news-->
+	<bean class="controller.NewsController"/>
+	
+	<!--  ADMIN   -->
+		
+	<!-- ADMIN user -->
+	<bean class="controller.admin.UserController"/>
+	
+	<!-- ADMIN main -->
+	<bean class="controller.admin.MainController"/>
+	
+	<!-- ADMIN aboutus -->
+	<bean class="controller.admin.AboutusController"/>
+	
+	<!-- ADMIN partners -->
+	<bean class="controller.admin.PartnersController"/>
+	
+	<!-- ADMIN team -->
+	<bean class="controller.admin.TeamController"/>
+	
+	<!-- ADMIN news -->
+	<bean class="controller.admin.NewsController"/>
+	
+	<!-- WEB  DAO   -->
+	
+	<!-- main -->
+	<bean class="model.web.MainwebDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean class="model.web.AboutwebDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+
+	<bean class="model.web.PtnrDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean class="model.web.TeamwebDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean class="model.web.NewswebDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<!-- ADMIN  DAO   -->
+	
+	<!-- main -->
+	<bean class="model.admin.MainDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<!-- user -->
+	<bean class="model.admin.UserDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+		
+	<!-- aboutus -->
+	<bean class="model.admin.AboutDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<!-- partners -->
+	<bean class="model.admin.PartnersDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<!-- team -->
+	<bean class="model.admin.TeamDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<!-- news -->
+	<bean class="model.admin.NewsDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<bean id="beanNameViewResolver"
+		class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0" />
+	</bean>
+	
+	<mvc:annotation-driven />
+	
+	<context:annotation-config />
+
+</beans>
+
+

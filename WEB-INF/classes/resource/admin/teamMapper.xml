@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="/admin/teamMapper">
+
+	<!-- 팀 카테고리 조회 -->
+	<select id="getTeamCateList" parameterType="hashmap" resultType="hashmap">
+		SELECT
+			aa.*,
+			(SELECT COUNT(*) FROM tbl_team WHERE expo_yn = 'Y'  and  cate_idx like CONCAT('%', aa.idx, '%')) AS cate_cnt
+		FROM tbl_teamcate aa
+		ORDER BY sort
+	</select>
+	
+	<!-- 팀  카테고리 count  -->
+	<select id="isInCate" parameterType="hashmap" resultType="int">
+		select count(*) as cnt from tbl_teamcate where idx = '${idx}'
+	</select>
+	
+	<!-- 팀  카테고리 수정 -->
+	<update id="upTeamCate" parameterType="hashmap">
+		update tbl_teamcate
+			set 
+			cate_nm  	= 	'${cate_kr}',
+			cate_nm_en  = 	'${cate_en}',
+			show_yn  	= 	'${show_yn}',
+			sort 	 	= 	'${sort}',
+			edit_date   = 	now() + 0
+		where
+			idx = '${idx}'
+	</update>
+	
+	<!-- 팀  카테고리 등록 -->
+	<insert id="insTeamCate" parameterType="hashmap">
+		insert into tbl_teamcate
+			set 
+		idx		 	=    (select idx from (SELECT LPAD(MAX(idx)+1,3,0) as idx FROM tbl_teamcate) as temp),
+		cate_nm  	= 	'${cate_kr}',
+		cate_nm_en 	= 	'${cate_en}',
+		show_yn   	= 	'${show_yn}',
+		sort   		=  	(select sort from (SELECT LPAD(MAX(sort)+1,3,0) as sort FROM tbl_teamcate) as temp2),   
+		submit_date = 	now()+0,
+		edit_date   = 	now() + 0
+	</insert>
+	
+	<!-- 팀  카테고리 삭제 -->
+	<delete id="delTeamCate" parameterType="hashmap">
+		delete from tbl_teamcate where idx = '${idx}'
+	</delete>
+	
+	<!-- 카테고리 마지막 수정 조회 -->
+	<select id="getOneTeamEdit" parameterType="hashmap" resultType="hashmap">
+		select DATE_FORMAT(edit_date,'%Y-%m-%d %T') AS edit_date2 from tbl_teamcate order by edit_date desc limit 1
+	</select>
+	
+	<!--  팀 게시판 리스트 -->
+	<select id="getTeamList" parameterType="hashmap" resultType="hashmap">
+		SELECT *, get_catenm_team(aa.idx) AS get_cate_nm FROM tbl_team aa where 1
+		 <if test="!search_name.equals('')">
+			AND team_nm_ko LIKE '%${search_name}%'
+		</if> 
+		<if test="!cate_idx.equals('')">
+			AND cate_idx LIKE '%${cate_idx}%'
+		</if> 
+		order by order_no asc
+	</select>
+	
+	<!--  팀리 게시판 리스트 -->
+	<select id="getTeamList_detail" parameterType="hashmap" resultType="hashmap">
+		SELECT *, get_catenm_team(aa.idx) AS get_cate_nm FROM tbl_team aa where 1
+		<if test="search_type eq 'team_nm_ko'.toString()">
+			AND aa.team_nm_ko LIKE '%${search_name}%'
+		</if> 
+		<if test="search_type eq 'level_ko'.toString()">
+			AND aa.level_ko LIKE '%${search_name}%'
+		</if> 
+		<if test="search_type eq 'career_ko'.toString()">
+			AND aa.career_ko LIKE '%${search_name}%'
+		</if> 
+		<if test="search_type eq 'edu_ko'.toString()">
+			AND aa.edu_ko LIKE '%${search_name}%'
+		</if> 
+		<if test="search_type eq 'intro_ko'.toString()">
+			AND aa.intro_ko LIKE '%${search_name}%'
+		</if> 
+		<if test="!expo_yn.equals('')">
+			AND aa.expo_yn = '${expo_yn}'
+		</if>
+		<if test="!main_yn.equals('')">
+			AND aa.main_yn = '${main_yn}'
+		</if> 
+		order by order_no asc
+	</select>
+	
+	<!-- 팀  갯수 -->
+	<select id="getTeamCount" parameterType="hashmap" resultType="hashmap">
+		select count(*) as CNT from tbl_team where 1
+		<if test="!search_name eq ''.toString()">
+			AND team_nm_ko LIKE '%${search_name}%'
+		</if> 
+		<if test="!cate_idx.equals('')">
+			AND cate_idx LIKE '%${cate_idx}%'
+		</if> 
+	</select>
+	
+	<!--  팀 게시판 리스트 -->
+	<select id="getTeamCount_detail" parameterType="hashmap" resultType="hashmap">
+		select count(*) as CNT from tbl_team where 1 
+		<if test="search_type eq 'team_nm_ko'.toString()">
+			AND team_nm_ko LIKE '%${search_name}%'
+		</if> 
+		<if test="search_type eq 'level_ko'.toString()">
+			AND level_ko LIKE '%${search_name}%'
+		</if> 
+		<if test="search_type eq 'career_ko'.toString()">
+			AND career_ko LIKE '%${search_name}%'
+		</if> 
+		<if test="search_type eq 'edu_ko'.toString()">
+			AND edu_ko LIKE '%${search_name}%'
+		</if> 
+		<if test="search_type eq 'intro_ko'.toString()">
+			AND intro_ko LIKE '%${search_name}%'
+		</if> 
+		<if test="!expo_yn.equals('')">
+			AND expo_yn = '${expo_yn}'
+		</if>
+		<if test="!main_yn.equals('')">
+			AND main_yn = '${main_yn}'
+		</if> 
+	</select>
+
+	<!-- 팀 카테고리 게시판 삭제 -->
+	<delete id="delTeamList" parameterType="hashmap">
+		delete from tbl_team where idx in (${idx})
+	</delete>
+	
+	<!-- 팀 카테고리 게시판 단일조회 -->
+	<select id="getOneTeamList" parameterType="hashmap" resultType="hashmap">
+		select *,DATE_FORMAT(edit_date,'%Y-%m-%d %T') AS edit_date2 from tbl_team where idx = '${idx}'
+	</select>
+	
+	<!-- 마지막 수정 조회 -->
+	<select id="getTeamdateList" parameterType="hashmap" resultType="hashmap">
+		select DATE_FORMAT(edit_date,'%Y-%m-%d %T') AS edit_date2 from tbl_team order by edit_date desc limit 1
+	</select>
+
+	<!-- 팀 게시판 등록 -->
+	<insert id="insTeam" parameterType="hashmap">
+		INSERT INTO tbl_team
+			(
+		 	   team_nm_ko,		  team_nm_en,		 	team_img, 			 team_img_ori,		 	 thumb_img, 		 thumb_img_ori,	 	
+		 	   cate_idx, 		  level_ko, 		  	level_en, 		 	 intro_ko,	      		 intro_en, 		 	 career_ko, 	  	  
+		 	   career_en,	  	  edu_ko,	      		edu_en,				 expo_yn, 	  	 	 	 main_yn,	     	 submit_date,	     	edit_date
+			 )
+		values
+			(
+			  '${team_nm_ko}', 	  '${team_nm_en}',	   '${team_img}',		'${team_img_ori}',		'${thumb_img}',		'${thumb_img_ori}',		
+			  '${cate_idx}',	  '${level_ko}',       '${level_en}',       '${intro_ko}',	 		'${intro_en}',		'${career_ko}', 	  
+			  '${career_en}',  	  '${edu_ko}',	  	   '${edu_en}',			'${expo_yn}', 	   		'${main_yn}',		 now() + 0,		 	 	 now() + 0
+			 )
+	</insert>
+	
+	<!-- 팀 게시판 수정 -->
+	<update id="upTeam" parameterType="hashmap">
+		UPDATE tbl_team 
+		set
+			team_nm_ko 	  = 	'${team_nm_ko}',
+			team_nm_en 	  = 	'${team_nm_en}',
+			team_img 	  = 	'${team_img}',
+			team_img_ori  = 	'${team_img_ori}',
+			thumb_img 	  = 	'${thumb_img}',
+			thumb_img_ori = 	'${thumb_img_ori}',
+			cate_idx 	  =		'${cate_idx}',
+			level_ko   	  = 	'${level_ko}',
+			level_en 	  = 	'${level_en}',
+			intro_ko	  =   	'${intro_ko}',
+			intro_en      = 	'${intro_en}',
+			career_ko 	  = 	'${career_ko}',
+			career_en 	  = 	'${career_en}',
+			edu_ko 	  	  = 	'${edu_ko}',
+			edu_en 	  	  = 	'${edu_en}',
+			expo_yn  	  = 	'${expo_yn}',
+			main_yn 	  = 	'${main_yn}',
+			edit_date  	  = 	 now() + 0 
+		where
+			idx = '${idx}'
+	</update>
+	
+	<!-- 팀 게시판 단일조회 -->
+	<select id="getOneFileList" parameterType="hashmap" resultType="hashmap">
+		select * from tbl_team where idx = '${idx}'
+	</select>
+	
+	<!-- 선택노출 수정  -->
+	<update id="upExpo_sel" parameterType="hashmap">
+		UPDATE tbl_team 
+		set
+			expo_yn  = 	'${sel_expo}'
+		where
+			idx in (${idx})
+	</update>
+	
+	<!-- 선택노출 수정  -->
+	<update id="upMain_sel" parameterType="hashmap">
+		UPDATE tbl_team 
+		set
+			main_yn  = 	'${sel_main}'
+		where
+			idx in (${idx})
+	</update>
+	
+	<!-- 선택카테고리 수정  -->
+	<update id="upCate_sel" parameterType="hashmap">
+		UPDATE tbl_team 
+		set
+			cate_idx  = 	'${sel_cate}'
+		where
+			idx in (${idx})
+	</update>
+	
+	<!-- 순서변경  -->
+	<update id="upOrder" parameterType="hashmap">
+		UPDATE  tbl_team 
+		set
+	 		order_no='${order_no}'
+		where 
+			idx ='${idx}'
+	</update>
+	
+	<!--  메인노출  게시판 리스트 -->
+	<select id="goMainExpo" parameterType="hashmap" resultType="hashmap">
+		SELECT *, get_catenm_team(aa.idx) AS get_cate_nm FROM tbl_team aa where main_yn = 'Y' ORDER BY main_yn desc,order_no
+	</select>
+	
+	<!-- 메인노출  게시판  갯수 -->
+	<select id="goMainCount" parameterType="hashmap" resultType="hashmap">
+		select count(*) as CNT from tbl_team where main_yn = 'Y'
+	</select>
+	
+	<!-- 순서변경  -->
+	<update id="upOrder_cate" parameterType="hashmap">
+		UPDATE  tbl_teamcate 
+		set
+	 		sort='${order_no}'
+		where 
+			idx ='${idx}'
+	</update>
+</mapper>

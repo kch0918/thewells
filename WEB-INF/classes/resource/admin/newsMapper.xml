@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="/admin/newsMapper">
+	<!-- 파트너 카테고리 조회 -->
+	<select id="getNewsCateList" parameterType="hashmap" resultType="hashmap">
+		SELECT
+			aa.*,
+				(SELECT COUNT(*) FROM tbl_news WHERE expo_yn = 'Y'  and cate_idx like CONCAT('%', aa.idx, '%')) AS cate_cnt
+		FROM tbl_newscate aa
+		ORDER BY sort
+	</select>
+	
+	<!-- 파트너 카테고리 수정 -->
+	<update id="upNewsCate" parameterType="hashmap">
+		update tbl_newscate
+			set 
+			cate_nm  	= 	'${cate_kr}',
+			show_yn  	= 	'${show_yn}',
+			sort 	 	= 	'${sort}',
+			edit_date   = 	 now() + 0
+		where
+			idx = '${idx}'
+	</update>
+	
+	<!-- 파트너 카테고리 등록 -->
+	<insert id="insNewsCate" parameterType="hashmap">
+		insert into tbl_newscate
+			set 
+		idx		 	=    (select idx from (SELECT LPAD(MAX(idx)+1,3,0) as idx FROM tbl_newscate) as temp),
+		cate_nm  	= 	'${cate_kr}',
+		show_yn   	= 	'${show_yn}',
+		sort   		=  	(select sort from (SELECT LPAD(MAX(sort)+1,3,0) as sort FROM tbl_newscate) as temp2),   
+		submit_date = 	 now()+0,
+		edit_date   = 	 now() + 0
+	</insert>
+	
+	<!-- 파트너 카테고리 삭제 -->
+	<delete id="delNewsCate" parameterType="hashmap">
+		delete from tbl_newscate where idx = '${idx}'
+	</delete>
+	
+	<!-- 카테고리 마지막 수정 조회 -->
+	<select id="getOneNewsEdit" parameterType="hashmap" resultType="hashmap">
+		select DATE_FORMAT(edit_date,'%Y-%m-%d %T') AS edit_date2 from tbl_newscate order by edit_date desc limit 1
+	</select>
+	
+	<!--  뉴스 카테고리 게시판 리스트 -->
+	<select id="getNewsList" parameterType="hashmap" resultType="hashmap">
+		SELECT *, get_catenm_news(aa.idx) AS get_cate_nm FROM tbl_news aa where 1
+		 <if test="!search_name.equals('')">
+			AND title LIKE '%${search_name}%'
+		</if> 
+		<if test="!cate_idx.equals('')">
+			AND cate_idx LIKE '%${cate_idx}%'
+		</if> 
+		order by submit_date ${order_by},order_no asc
+		limit #{s_rownum}, #{e_rownum}
+	</select>
+	
+	<!--  뉴스 카테고리 게시판 리스트 -->
+	<select id="getNewsList_detail" parameterType="hashmap" resultType="hashmap">
+		SELECT *, get_catenm_news(aa.idx) AS get_cate_nm FROM tbl_news aa where 1
+		<if test="search_type eq 'title'.toString()">
+			AND aa.title LIKE '%${search_name}%'
+		</if> 
+		<if test="search_type eq 'link_part'.toString()">
+			AND aa.link_part LIKE '%${search_name}%'
+		</if> 
+		<if test="!expo_yn.equals('')">
+			AND aa.expo_yn = '${expo_yn}'
+		</if>
+		<if test="!top_yn.equals('')">
+			AND aa.top_yn = '${top_yn}'
+		</if> 
+		AND aa.submit_date BETWEEN '${start_date}00000000' and '${finish_date}99999999'
+		order by submit_date ${order_by},order_no asc
+		limit #{s_rownum}, #{e_rownum}
+	</select>
+	
+	<!-- 뉴스 카테고리  갯수 -->
+	<select id="getNewsCount" parameterType="hashmap" resultType="hashmap">
+		select count(*) as CNT from tbl_news where 1
+		<if test="!search_name.equals('')">
+			AND title LIKE '%${search_name}%'
+		</if> 
+		<if test="!cate_idx.equals('')">
+			AND cate_idx LIKE '%${cate_idx}%'
+		</if> 
+		order by order_no asc
+	</select>
+	
+	<!--  뉴스 카테고리 게시판 리스트 -->
+	<select id="getNewsCount_detail" parameterType="hashmap" resultType="hashmap">
+		select count(*) as CNT from tbl_news where 1 
+		<if test="search_type eq 'title'.toString()">
+			AND title LIKE '%${search_name}%'
+		</if> 
+		<if test="search_type eq 'link_part'.toString()">
+			AND link_part LIKE '%${search_name}%'
+		</if> 
+		<if test="!expo_yn.equals('')">
+			AND expo_yn = '${expo_yn}'
+		</if>
+		<if test="!top_yn.equals('')">
+			AND top_yn = '${top_yn}'
+		</if> 
+		AND submit_date BETWEEN '${start_date}00000000' and '${finish_date}99999999'
+		order by order_no asc
+	</select>
+
+	<!-- 뉴스 카테고리 게시판 삭제 -->
+	<delete id="delNewsList" parameterType="hashmap">
+		delete from tbl_news where idx in (${idx})
+	</delete>
+	
+	<!-- 뉴스 카테고리 게시판 단일조회 -->
+	<select id="getOneNewsList" parameterType="hashmap" resultType="hashmap">
+		select *,DATE_FORMAT(edit_date,'%Y-%m-%d %T') AS edit_date2, DATE_FORMAT(submit_date,'%Y%m%d') AS submit_date2 from tbl_news where idx = '${idx}'
+	</select>
+	
+	<!-- 뉴스 수정 조회 -->
+	<select id="getNewsdateList" parameterType="hashmap" resultType="hashmap">
+		select DATE_FORMAT(edit_date,'%Y-%m-%d %T') AS edit_date2 from tbl_news order by edit_date desc limit 1
+	</select>
+
+	<!-- 뉴스 게시판 등록 -->
+	<insert id="insNews" parameterType="hashmap">
+		INSERT INTO tbl_news
+			(
+		 	   submit_date,		  cate_idx,		 	  title, 			 conts,		 	 file, 			 file_ori,	 	
+		 	   url,				  part_idx, 	  	  link_part,		 expo_yn,	     top_yn,	     edit_date,			order_no
+			 )
+		values
+			(
+			  '${submit_date}000000',   '${cate_idx}',	 '${title}',		'${conts}',		 '${file}',	 	 '${file_ori}',		
+			  '${url}',	  		  '${part_idx}',     '${link_part}',	'${expo_yn}', 	 '${top_yn}',	  now() + 0,		((select order_no from (SELECT MAX(order_no)+1 as order_no FROM tbl_news) as temp))
+			 )
+	</insert>
+	
+	<!-- 뉴스 게시판 수정 -->
+	<update id="upNews" parameterType="hashmap">
+		UPDATE tbl_news 
+		set
+			submit_date   = 	'${submit_date}000000',
+			cate_idx 	  = 	'${cate_idx}',
+			title 		  = 	'${title}',
+			conts  	 	  = 	'${conts}',
+			file 	 	  = 	'${file}',
+			file_ori 	  = 	'${file_ori}',
+			url     	  = 	'${url}',
+			part_idx 	  = 	'${part_idx}',
+			link_part 	  = 	'${link_part}',
+			expo_yn  	  = 	'${expo_yn}',
+			top_yn 	 	  = 	'${top_yn}',
+			edit_date  	  = 	 now() + 0 
+		where
+			idx = '${idx}'
+	</update>
+	
+	<!-- 뉴스 게시판 단일조회 -->
+	<select id="getOneFileList" parameterType="hashmap" resultType="hashmap">
+		select * from tbl_news where idx = '${idx}'
+	</select>
+	
+	<!--  뉴스  게시판  파트너스 검색 리스트 -->
+	<select id="getSearchpart" parameterType="hashmap" resultType="hashmap">
+		SELECT idx,part_nm_ko FROM tbl_partners WHERE part_nm_ko LIKE '%${part_nm_ko}%'
+	</select>
+	
+	<!-- 선택노출 수정  -->
+	<update id="upExpo_sel" parameterType="hashmap">
+		UPDATE tbl_news 
+		set
+			expo_yn  = 	'${sel_expo}'
+		where
+			idx in (${idx})
+	</update>
+	
+	<!-- 선택노출 수정  -->
+	<update id="upMain_sel" parameterType="hashmap">
+		UPDATE tbl_news 
+		set
+			top_yn  = 	'${sel_main}'
+		where
+			idx in (${idx})
+	</update>
+	
+	<!-- 선택카테고리 수정  -->
+	<update id="upCate_sel" parameterType="hashmap">
+		UPDATE tbl_news 
+		set
+			cate_idx  = 	'${sel_cate}'
+		where
+			idx in (${idx})
+	</update>
+	
+	<!-- 순서변경  -->
+	<update id="upOrder" parameterType="hashmap">
+		UPDATE  tbl_news 
+		set
+	 		order_no='${order_no}'
+		where 
+			idx ='${idx}'
+	</update>
+	
+	<!--  최신 정렬 리스트 -->
+	<select id="changeFunc" parameterType="hashmap" resultType="hashmap">
+		SELECT *, get_catenm_news(aa.idx) AS get_cate_nm FROM tbl_news aa where 1
+		 <if test="!search_name.equals('')">
+			AND title LIKE '%${search_name}%'
+		</if> 
+		<if test="!cate_idx.equals('')">
+			AND cate_idx LIKE '%${cate_idx}%'
+		</if> 
+		order by submit_date ${order_by}
+		limit #{s_rownum}, #{e_rownum}
+	</select>
+	
+	<!-- 뉴스 파일리스트 -->
+	<select id="getNewsFileName" parameterType="hashmap" resultType="hashmap">
+		select file, file_ori from tbl_news where idx = '${idx}'
+	</select>
+	
+	<!--  뉴스 카테고리 게시판 리스트 -->
+	<select id="goMainExpo" parameterType="hashmap" resultType="hashmap">
+		SELECT *, get_catenm_news(aa.idx) AS get_cate_nm FROM tbl_news aa where 1
+		ORDER BY top_yn desc
+		limit #{s_rownum}, #{e_rownum}
+	</select>
+	
+	<!-- 뉴스 상위고정 게시물  갯수 -->
+	<select id="goMainCount" parameterType="hashmap" resultType="hashmap">
+		select count(*) as CNT from tbl_news where 1
+	</select>
+	
+	<!-- 순서변경  -->
+	<update id="upOrder_cate" parameterType="hashmap">
+		UPDATE  tbl_newscate 
+		set
+	 		sort='${order_no}'
+		where 
+			idx ='${idx}'
+	</update>
+</mapper>

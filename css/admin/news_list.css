@@ -1,0 +1,125 @@
+/* datepicker */
+#container.news_list .datepicker {
+/* 	background: #fff url(/img/icon/datepicker-ico.png) no-repeat center right 2rem;  */
+	font-size: 16px; letter-spacing: normal; color: #333; text-indent: 20px;}
+#ui-datepicker-div {font-size: 12px; width: 213px; border-radius: 0; border: 1px solid #eee; padding: 10px 10px 5px; transform: translateY(3%);}
+#ui-datepicker-div .ui-datepicker-header {background: none; border: none;}
+#ui-datepicker-div .ui-datepicker-header a {height: 24px; width: 0;}
+#ui-datepicker-div .ui-datepicker-header a.ui-state-hover {background: none; border: none;}
+#ui-datepicker-div .ui-datepicker-header .ui-datepicker-title > select {padding: 0 0 0 5px; border:none}
+#ui-datepicker-div .ui-datepicker-header a span {background-position: center; margin-top: 7px; cursor: pointer;}
+#ui-datepicker-div .ui-datepicker-prev span {background-image: url(/img/sub/bt_left.png);}
+#ui-datepicker-div .ui-datepicker-next span {background-image: url(/img/sub/bt_right.png);}
+#ui-datepicker-div .ui-datepicker-title {font-size: 14px; letter-spacing: normal; margin: 0 10px;}
+#ui-datepicker-div .ui-datepicker-title span {letter-spacing: inherit;}
+/* #ui-datepicker-div .ui-datepicker-calendar tbody tr {border-bottom: 1px solid #ccc;} */
+#ui-datepicker-div .ui-datepicker-calendar tbody tr:last-child {border: none;}
+#ui-datepicker-div .ui-datepicker-calendar th {font-size: 12px; font-weight: normal; color: #222;}
+#ui-datepicker-div .ui-datepicker-calendar td a {background: no-repeat; text-align: center; border: none; color: #888; font-size: 11px;}
+#ui-datepicker-div .ui-datepicker-buttonpane {border-top:none}
+#ui-datepicker-div .ui-datepicker-buttonpane .ui-datepicker-current {background: #fff;}
+#ui-datepicker-div .ui-datepicker-buttonpane .ui-datepicker-close {background: #fff;}
+.page_box {
+	text-align: center;
+	padding: 36px 0 40px;
+	background: #f2f3f6;
+}    
+.page_box .bt_num {
+    font-size: 12px;
+    font-family: 'Roboto';
+    color: #666;
+    margin: 0 2.5px;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    transition: .3s all;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    cursor:pointer;
+}
+.page_box .bt_num.bt_act{
+    color: #fff;
+    background: #062459;
+}
+#container.news_list .top_cont .search_input .drop_box.show .contbox .rt .date-select .date_box {
+	padding-left: 8px;
+}
+#container.news_list .top_cont .serch_cont_sort {
+	min-width: 171px;
+    margin: 0 20px;
+}
+#container.news_list .contwrap .wrap_inner {
+	max-height: 871px;
+	max-width: 1370px;
+	padding: 0;
+	overflow-x:auto;
+}
+#container.news_list .contwrap .list-container .list-table .tb_div > tr .fixed_top {
+	display: inline-block;
+    width: 76px;
+    height: 30px;
+    border-radius: 15px;
+    background: #000;
+    font-size: 12px;
+    line-height: 30px;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 10px;
+}
+#container.news_list .contwrap .list-container .list-table .tb_div > tr .tit {
+	display: inline-block;
+    vertical-align: middle;
+    max-width: calc(100% - 86px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#container.news_list .contwrap .list-container .list-table .tb_div > tr > td:nth-child(1) {
+	width: 2%;
+}
+#container.news_list .contwrap .list-container .list-table .tb_div > tr > td:nth-child(2) {
+	width: 6%;
+}
+#container.news_list .contwrap .list-container .list-table .tb_div > tr > td:nth-child(3) {
+	width: 13%;
+	max-width: 200px;
+}
+#container.news_list .contwrap .list-container .list-table .tb_div > tr > td:nth-child(4) {
+	max-width: 495px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 44%;
+}
+#container.news_list .contwrap .list-container .list-table .tb_div > tr > td:nth-child(5) {
+	max-width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+	width: 16%;
+}
+#container.news_list .contwrap .list-container .list-table .tb_div > tr > td:nth-child(6) {
+	width: 10%;
+}
+#container.news_list .contwrap .list-container .list-table .tb_div > tr > td:nth-child(7) {
+	width: 10%;
+}
+#container.news_list .contwrap .list-container .list-table .tb_div > tr > td:nth-child(8) {
+	width: 3%;
+}
+
+#container.news_list .top_cont .search_input .drop_box.show .cont03 {
+	padding: 17px 0 25px !important;
+}
+#container.news_list .top_cont .search_input .drop_box.show .cont03 .rt.radio_box .search-right .input-radio.ml {
+	margin-left: 70px;
+}
+#container.news_list .top_cont .search_input .drop_box.show .cont03 .rt.radio_box .search-right .input-radio .txt {
+	padding-left: 34px;
+}
+#container.news_list .contwrap .list-container .list-table .t_hd > tr > th,
+#container.news_list .contwrap .list-container .list-table .tb_div > tr > td{
+	white-space:nowrap;
+}
+#container.news_list .contwrap .list-container .list-table .tb_div .order_no {
+	border-bottom: 0.5px solid #c1c2c4;
+}

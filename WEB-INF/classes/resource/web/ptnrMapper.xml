@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="/web/ptnrMapper">
+	
+	<!-- 파트너스 조회 -->
+	<select id="getPntrCate" parameterType="hashmap" resultType="hashmap">
+		SELECT
+			aa.*,
+				(SELECT COUNT(*) FROM tbl_partners WHERE expo_yn = 'Y'  and cate_idx like CONCAT('%', aa.idx, '%')) AS cate_cnt
+		FROM tbl_partcate aa
+		WHERE show_yn = "Y"
+		ORDER BY sort asc
+	</select>
+	
+	<!-- 파트너스 단일조회 -->
+	<select id="getPtnrdetail" parameterType="hashmap" resultType="hashmap">
+		SELECT * FROM tbl_partners where cate_idx like CONCAT('%', ${idx}, '%') AND expo_yn = 'Y' order by order_no
+	</select>
+	
+	<!-- 파트너스 세부조회 -->
+	<select id="getPtnrInfo" parameterType="hashmap" resultType="hashmap">
+		SELECT
+			(SELECT part_nm_ko FROM tbl_partners WHERE idx=t1.before_idx AND cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y') AS before_nm,
+			(SELECT part_nm_ko FROM tbl_partners WHERE idx=t1.after_idx AND cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y') AS after_nm,
+			t1.*
+		FROM 
+		(
+			SELECT
+				case 
+				when aa.idx = ( SELECT MIN(idx) FROM tbl_partners WHERE cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y') then ( SELECT max(idx) FROM tbl_partners WHERE cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y' )
+				ELSE (SELECT idx FROM tbl_partners WHERE idx <![CDATA[<]]> aa.idx and cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y' ORDER BY idx desc LIMIT 1)
+				END AS before_idx, 
+		
+				case
+				when aa.idx = ( SELECT max(idx) FROM tbl_partners WHERE cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y' ) then ( SELECT MIN(idx) FROM tbl_partners WHERE cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y' )
+				ELSE (SELECT idx FROM tbl_partners WHERE idx <![CDATA[>]]> aa.idx and cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y' LIMIT 1)
+				END AS after_idx, 
+			
+				aa.* , get_catenm(aa.idx) AS get_cate_nm
+			
+			FROM tbl_partners aa 
+			WHERE idx = '${idx}'
+			
+		) t1
+	</select>
+	
+	<!-- 파트너스 세부조회(영문) -->
+	<select id="getPtnrInfo_en" parameterType="hashmap" resultType="hashmap">
+		SELECT
+			(SELECT part_nm_en FROM tbl_partners WHERE idx=t1.before_idx AND cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y') AS before_nm,
+			(SELECT part_nm_en FROM tbl_partners WHERE idx=t1.after_idx AND cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y') AS after_nm,
+			t1.*
+		FROM 
+		(
+			SELECT
+				case 
+				when aa.idx = ( SELECT MIN(idx) FROM tbl_partners WHERE cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y') then ( SELECT max(idx) FROM tbl_partners WHERE cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y' )
+				ELSE (SELECT idx FROM tbl_partners WHERE idx <![CDATA[<]]> aa.idx and cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y' ORDER BY idx desc LIMIT 1)
+				END AS before_idx, 
+		
+				case
+				when aa.idx = ( SELECT max(idx) FROM tbl_partners WHERE cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y' ) then ( SELECT MIN(idx) FROM tbl_partners WHERE cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y' )
+				ELSE (SELECT idx FROM tbl_partners WHERE idx <![CDATA[>]]> aa.idx and cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y' LIMIT 1)
+				END AS after_idx, 
+			
+				aa.* , get_catenm(aa.idx) AS get_cate_nm
+			
+			FROM tbl_partners aa 
+			WHERE idx = '${idx}'
+			
+		) t1
+	</select>
+	
+	<!-- 뉴스 슬라이드 -->
+	<select id="getPtnrNewsInfo" parameterType="hashmap" resultType="hashmap">
+		SELECT 
+			bb.* ,DATE_FORMAT(bb.submit_date,'%Y-%m-%d') as submit_date2
+		from tbl_partners aa, tbl_news bb
+		where aa.idx = bb.part_idx and aa.idx = '${idx}'
+	</select> 
+</mapper>

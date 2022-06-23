@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="/web/newsMapper">
+	
+	<!-- 뉴스 카테고리 조회 -->
+	<select id="getNewsCate" parameterType="hashmap" resultType="hashmap">
+		SELECT
+			aa.*,
+				(SELECT COUNT(*) FROM tbl_news WHERE expo_yn = 'Y'  and cate_idx like CONCAT('%', aa.idx, '%')) AS cate_cnt
+		FROM tbl_newscate aa
+		WHERE show_yn = "Y"
+		ORDER BY sort asc
+	</select>
+	
+	<!-- 뉴스 단일조회 -->
+	<select id="getNewsdetail" parameterType="hashmap" resultType="hashmap">
+		SELECT 
+			*,
+			DATE_FORMAT(submit_date,'%Y/%m/%d') AS submit_date2, 
+			get_catenm_news(aa.idx) AS get_cate_nm
+		FROM tbl_news aa where 
+			expo_yn = 'Y'
+		<if test="!idx.equals('')">	
+			AND cate_idx like CONCAT('%', '${idx}', '%')
+		</if>	
+		<if test="!search_name.equals('')">
+			AND ( aa.title LIKE '%${search_name}%'
+			OR 	  aa.conts LIKE '%${search_name}%' )
+		</if> 
+			AND aa.submit_date BETWEEN '${start_date}000000' and '${finish_date}595959'
+		order by aa.submit_date desc
+		limit ${s_rownum}, ${e_rownum}
+	</select>
+	
+	<!-- 뉴스 상세조회 -->
+	<select id="getOneNewsList" parameterType="hashmap" resultType="hashmap">
+		SELECT *,DATE_FORMAT(submit_date,'%Y/%m/%d') AS submit_date2
+			FROM tbl_news aa 
+		WHERE idx = '${idx}'
+	</select>
+	
+	<!-- 뉴스 이전 게시물 조회 -->
+	<select id="prevInfo" parameterType="hashmap" resultType="hashmap">
+	    SELECT 
+	    	* 
+	    from tbl_news where 
+	    	idx <![CDATA[<]]> '${idx}'  
+	    	AND	cate_idx = (SELECT cate_idx FROM tbl_news WHERE idx = '${idx}')
+	    	AND expo_yn = 'Y'
+	    	order by submit_date asc limit 1		
+	</select>
+	
+	<!-- 뉴스 다음 게시물 조회 -->
+	<select id="nextInfo" parameterType="hashmap" resultType="hashmap">
+		SELECT 
+			* 
+		from tbl_news where 
+			idx <![CDATA[>]]> '${idx}' 
+			AND cate_idx = (SELECT cate_idx FROM tbl_news WHERE idx = '${idx}')
+			AND expo_yn = 'Y'
+			order by submit_date desc limit 1		
+	</select>
+	
+	<!-- 뉴스 다음 게시물 조회 -->
+	<select id="nextInfo_all" parameterType="hashmap" resultType="hashmap">
+		SELECT 
+			* 
+		from tbl_news where 
+			idx <![CDATA[>]]> '${idx}' 
+			AND expo_yn = 'Y'
+			ORDER BY submit_date desc limit 1		
+	</select>
+	
+	<!-- 뉴스 이전 게시물 조회 -->
+	<select id="prevInfo_all" parameterType="hashmap" resultType="hashmap">
+	    SELECT 
+	    	* 
+	    from tbl_news where 
+	    	idx <![CDATA[<]]> '${idx}'  
+	    	AND expo_yn = 'Y'
+    		ORDER BY submit_date asc limit 1		
+	</select>
+	
+	<!-- 뉴스 갯수 -->
+	<select id="getNewsCount" parameterType="hashmap" resultType="hashmap">
+		select 
+			count(*) as CNT, 
+			DATE_FORMAT(submit_date,'%Y/%m/%d') AS submit_date2, 
+			get_catenm_news(aa.idx) AS get_cate_nm
+		FROM tbl_news aa where 
+			aa.expo_yn = 'Y'
+		<if test="!idx.equals('')">	
+			AND cate_idx like CONCAT('%', '${idx}', '%')
+		</if>
+		<if test="!search_name.equals('')">
+			AND ( aa.title LIKE '%${search_name}%'
+			OR    aa.conts LIKE '%${search_name}%' )
+		</if>  
+		AND aa.submit_date BETWEEN '${start_date}000000' and '${finish_date}595959'
+	</select>
+	
+	<!-- 뉴스 등록년도 년도 조회-->
+	<select id="getOneNews_date" parameterType="hashmap" resultType="hashmap">
+		SELECT DATE_FORMAT(submit_date,'%Y-%m-%d') as submit_date2 FROM tbl_news ORDER BY submit_date asc LIMIT 1
+	</select>
+	
+	<!-- 뉴스 고정조회 -->
+	<select id="getNewsdetail_top" parameterType="hashmap" resultType="hashmap">
+		SELECT 
+			*,
+			DATE_FORMAT(submit_date,'%Y/%m/%d') AS submit_date2, 
+			get_catenm_news(aa.idx) AS get_cate_nm
+		FROM tbl_news aa where 1 AND expo_yn = 'Y'
+		ORDER BY submit_date desc,top_yn
+	</select>
+</mapper>

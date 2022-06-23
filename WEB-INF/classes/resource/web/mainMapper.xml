@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="/web/mainMapper">
+
+	<!-- 업적관리 조회 -->
+	<select id="getAchieve" parameterType="hashmap" resultType="hashmap">
+		select * from tbl_achive
+	</select>
+	
+	<!-- 파트너스 조회 -->
+	<select id="getPtnr" parameterType="hashmap" resultType="hashmap">
+		select * from tbl_partners where expo_yn = "Y" and main_expo = "Y" order by order_no 
+	</select>
+	
+	<!-- 팀 조회 -->
+	<select id="getTeam" parameterType="hashmap" resultType="hashmap">
+		select tbl_teamcate.*, tbl_team.*
+			from tbl_teamcate, tbl_team
+		where
+			tbl_teamcate.idx = tbl_team.cate_idx
+		AND expo_yn = "Y"
+		AND main_yn = "Y"
+		order by order_no
+	</select>
+	
+	<!-- 최신뉴스 조회 -->
+	<select id="getNews" parameterType="hashmap" resultType="hashmap">
+		select idx,title,conts,url,get_catenm_news(idx) AS cate,DATE_FORMAT(submit_date,'%Y-%m-%d') as submit_date2 from tbl_news where expo_yn = "Y" order by submit_date desc limit 3
+	</select>
+	
+	<!-- 컨텍 -->
+	<insert id="insContact" parameterType="hashmap">
+		INSERT INTO tbl_contact
+			(
+		 	   cate,		    title,			 conts, 		  file, 		   phone, 		    mail,		    submit_date
+			)
+		values
+			(
+			  '${cate}', 	  '${title}',	  '${conts}',    '${file}',    	 '${phone}',	  '${mail}',	 	  now()+0
+			)
+	</insert>
+</mapper>

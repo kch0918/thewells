@@ -1,0 +1,19 @@
+
+@import '/css/admin/reset.css';
+@import '/css/admin/layout.css';
+
+
+@import '/css/admin/login.css';
+@import '/css/admin/intro.css';
+@import '/css/admin/achievement.css';
+@import '/css/admin/history_list.css';
+@import '/css/admin/history_upload.css';
+@import '/css/admin/partners_list.css';
+@import '/css/admin/partners_upload.css';
+@import '/css/admin/partners_cate.css';
+
+@import '/css/admin/team_list.css';
+@import '/css/admin/team_upload.css';
+@import '/css/admin/news_cate.css';
+@import '/css/admin/news_list.css';
+@import '/css/admin/news_upload.css';

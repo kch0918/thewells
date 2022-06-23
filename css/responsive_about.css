@@ -1,0 +1,88 @@
+@media screen and (max-width:1280px) {
+	.philosophy .scroll-wr .txt {font-size: 2rem;}
+	
+	.philosophy .fixed-wr .txt-box .tit.pc1 {display: none;}
+	.philosophy .fixed-wr .txt-box .tit.pc2 {display: block; height: 12rem; font-size: 6.5rem; line-height: 1.2; margin-top: -1rem;}
+/* 	.philosophy .fixed-wr .circle-box {margin-top: 15rem;} */
+	
+	.history .cont-it {width: 80%;}
+}
+@media screen and (max-width:989px) {
+	.philosophy .scroll-wr .txt {font-size: 1.9rem;}
+}
+/* 모바일 */
+@media screen and (max-width:768px) {
+	/* stewardship */
+	.stewardship .cont-wr {padding-right: 2rem;}
+	.stewardship .notice-wr {padding: 0;}
+	.stewardship .notice-wr .notice {font-size: 1.4rem; line-height: 1.5;}
+	.stewardship h3 {font-size: 1.4rem; font-weight: 500; line-height: 1.36; letter-spacing: -0.035rem; font-family: 'Noto Sans KR', sans-serif; margin-top: 3.5rem;} 
+	.stewardship .part1 {padding-top: 0;}
+	.stewardship .part1 .cont {padding: 1.7rem 0; margin: 1.7rem 0; border-top: 1px solid #000; border-bottom: 1px solid #000;}
+	.stewardship .part1 .cont p {font-size: 1.2rem; line-height: 1.5; letter-spacing: -0.02rem;}
+	.stewardship .tab-wr {margin-top: 1.7rem;}
+	.stewardship .tab-wr .tab-it .tab-tit {padding: 2rem 0;}
+	.stewardship .tab-wr .tab-it .tab-cont {padding: 2.5rem 0;}
+	.stewardship .tab-wr .tab-it .tit-num {font-size: 1rem;}
+	.stewardship .tab-wr .tab-it .tit {font-size: 1.2rem;}
+	.stewardship .tab-wr .tab-it .tab-cont p {font-size: 1.2rem; padding-bottom: 1.5rem;}
+	.stewardship .manager {font-size: 1.2rem; padding-top: 1.5rem;}
+	
+	/* philosophy */
+	body.philosophy #container {overflow: hidden !important;}
+	#aboutus.philosophy .nav-wr {position: relative; z-index: 9;}
+	.philosophy #container {background: url(/img/sub/mo_phil_bg.jpg) no-repeat top center / auto 100%; overflow: hidden;}
+	.philosophy .sub-cont {margin-bottom: 0; margin-top: 5.5rem;}
+	.philosophy .svg-box {z-index: 0;}
+	/* fixed-wr */
+	.philosophy .fixed-wr {padding: 0; height: auto;}
+	.philosophy .fixed-wr .txt-box {position: relative; transform: none; padding: 0;}
+	.philosophy .fixed-wr .txt-box .sut-tit {font-size: 1.2rem; color: #2d2d2d; letter-spacing: -0.03rem;}
+	.philosophy .fixed-wr .txt-box .tit {font-size: 3.6rem; padding-top: 1.3rem;}
+	.philosophy .fixed-wr .txt-box .tit.pc1 {display: block;}
+	.philosophy .fixed-wr .txt-box .tit.pc2 {display: none;}
+	/* scroll-wr */
+	.philosophy .scroll-wr {padding: 2.5rem 2rem 0; overflow: hidden; margin-top: 0;}
+	.philosophy .scroll-wr::before {background: none;}
+	.philosophy .scroll-wr .txt {font-size: 1.3rem; line-height: 1.5; letter-spacing: -0.03rem; padding: 0;}
+	/* circle-box */
+	.philosophy .circle-box {position: relative; width: 25rem; height: 25rem; margin: 3rem auto 5rem;}
+	.philosophy .circle-box * {width: 100%;}
+	.philosophy .circle-box .n2 {width: calc(100% - 2rem);}
+	.philosophy .circle-box .n3 {width: calc(100% - 4rem);}
+	.philosophy .svg-wr.mo {z-index: 0;}
+	
+	/* history */
+	.history #container {background: none;}
+	.history .sub-cont {background-image: url(/img/sub/mo_history_bg.jpg); background-size: cover;}
+	.history .cont-wr {padding: 0 2rem;}
+	.history .h-inner {padding: 2rem 0 0;}
+	.history .cont-it {display: block; width: 100%; max-width: 100%; padding-left: 1.2rem; position: relative;}
+	.history .cont-it * {transition: all .5s;}
+	/* year box */
+	.history .cont-it .year-box {padding-right: 0; transform: translateY(-50%); z-index: 1;}
+	.history .cont-it .year-box .year {transform: none; font-size: 3.5rem; width: 100%; height: auto; text-align: left; padding-left: 2.5rem; color: #0567a6;}
+	.history .cont-it .year-box::before, .history .cont-it .year-box::after {top: 50%; right: auto; left: 0; width: 0.6rem; height: 0.6rem; transform: translate(-50%, -50%);}
+	/* month box */
+	.history .cont-it .month-box {padding-left: 2.5rem; margin-top: 1.5rem; padding-bottom: 5rem; transform: translateY(-2rem);}
+	.history .cont-it .month-box .month {font-size: 1.3rem; line-height: 1.9; width: 4rem; padding-bottom: 0; vertical-align: top; padding-right: 1.5rem; text-align: right;}
+	.history .cont-it .month-box .cont {font-size: 1.2rem; width: calc(100% - 4rem); padding-bottom: 0.4rem;}
+	/* line box */
+	.history .cont-it .line-box {position: absolute; top: 0; height: 100%; z-index: 0;}
+/* 	.history .cont-it .line-box::before, .history .cont-it .line-box::after {transform: translateX(0%);} */
+	.history .cont-it:last-of-type .line-box::before, .history .cont-it.ani:last-of-type .line-box::after {height: calc(100% - 6rem);}
+	/* cont-it.ani */
+	.history .cont-it.ani .year-box .year {transform: none; font-size: 6rem;}
+	.history .cont-it.ani .year-box::before {height: 2rem; width: 2rem;}
+	.history .cont-it.ani .month-box {transform: translateY(-3rem); padding-bottom: 2.5rem;}
+}
+
+@media screen and (max-width:500px) {
+}
+
+@media screen and (max-width:430px) {
+}
+
+@media screen and (max-width:320px) {
+	
+}

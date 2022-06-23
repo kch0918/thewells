@@ -1,0 +1,88 @@
+/* 버튼 공통 */
+.btn-box-wr {position: relative;}
+.btn-box {border: 1px solid #062459; width: auto; max-width: 6.5rem; height: 6.5rem; transition: max-width .8s ease; border-radius: 50px; position: relative; display: inline-block;}
+.btn-box:after {background: url(/img/main/pc_btn_arrow.png) no-repeat center / 8px; position: absolute; width: 6.5rem; height: 6.5rem; content: ''; top: 0; left: 0; display: block; transition: all .5s ease;}
+.btn-box .line {width: 5.6rem; height: 1px; display: block; background: #062459; top: 51.3%; position: absolute; transform: translateY(-50%); left: -1.95rem; transition: left .4s ease,opacity .4s ease,visibility .4s ease;}
+.btn-box .txt {opacity: 0; visibility: hidden; font-size: 1.6rem; font-weight: normal; letter-spacing: 0.16px; line-height: 6.4rem; color: #062459; padding-left: 3rem; padding-right: 5rem; white-space: nowrap; will-change: opacity,padding-left,visibility; transition: opacity .6s ease,visibility .6s ease,padding-left .6s ease;}
+.btn-box:hover {max-width: 100%;}
+.btn-box:hover:after {left: 2.5rem;}
+.btn-box:hover .txt {opacity: 1; padding-left: 7.2rem; visibility: visible;}
+.btn-box:hover .line {left: 10rem; opacity: 0;}
+.btn-box.hover {max-width: 100%; width: 19.4rem;}
+.btn-box.hover:after {left: 4rem;}
+.btn-box.hover .txt {opacity: 1; padding-left: 7.2rem; visibility: visible; color: #062459 !important;}
+.btn-box.hover .line {left: 10rem; opacity: 0;}
+
+
+/* datepicker */
+.datepicker {background: #fff url(/img/icon/datepicker-ico.png) no-repeat center right 2rem; font-size: 16px; letter-spacing: normal; color: #333; text-indent: 2rem;}
+#ui-datepicker-div {font-size: 1.2rem; width: 18rem; border-radius: 0; border: 1px solid #eee; padding: 1rem 1rem .5rem; transform: translateY(3%);}
+#ui-datepicker-div .ui-datepicker-header {background: none; border: none;}
+#ui-datepicker-div .ui-datepicker-header a {height: 2.4em;}
+#ui-datepicker-div .ui-datepicker-header a.ui-state-hover {background: none; border: none;}
+#ui-datepicker-div .ui-datepicker-header a span {background-position: center;}
+#ui-datepicker-div .ui-datepicker-prev span {background-image: url(/img/sub/bt_left.png);}
+#ui-datepicker-div .ui-datepicker-next span {background-image: url(/img/sub/bt_right.png);}
+#ui-datepicker-div .ui-datepicker-title {font-size: 1.4rem; letter-spacing: normal;}
+#ui-datepicker-div .ui-datepicker-title span {letter-spacing: inherit;}
+/* #ui-datepicker-div .ui-datepicker-calendar tbody tr {border-bottom: 1px solid #ccc;} */
+#ui-datepicker-div .ui-datepicker-calendar tbody tr:last-child {border: none;}
+#ui-datepicker-div .ui-datepicker-calendar th {font-size: 1.2rem; font-weight: normal; color: #222;}
+#ui-datepicker-div .ui-datepicker-calendar td a {background: no-repeat; text-align: center; border: none; color: #888; font-size: 1.1rem;}
+
+
+/* pagination */
+.page_box {text-align: center;}
+.page_box .bt_num {font-size: 1.5rem; letter-spacing: -0.038rem; color: rgba(0, 0, 0, 0.5); margin: 0 0.4rem; border: 1px solid transparent; transition: .3s all; width: 2.8rem; height: 2.8rem; line-height: 2.8rem;}
+.page_box .bt_num:hover {color: #0567a6;}
+.page_box .bt_num.bt_act {color: #0567a6; border-color: #0567a6; border-radius: 50%; }
+.page_box .bt_arrow {width: 2.7rem; height: 3rem; background: url(/img/sub/bt_first.png) no-repeat center / 1.7rem; padding: 0 1rem;}
+.page_box .bt_arrow.bt_left {background-image: url(/img/sub/bt_left.png); background-size: 0.7rem;}
+.page_box .bt_arrow.bt_right {background-image: url(/img/sub/bt_right.png); background-size: 0.7rem;}
+.page_box .bt_arrow.bt_last {background-image: url(/img/sub/bt_last.png);}
+
+
+/* sub */
+.sub-tit-wr p.sub-tit {font-size: 7rem; font-weight: 600; line-height: 1; letter-spacing: 0.07rem; text-align: center; color: #0567a6;}
+.sub-tit-wr p.sub-txt {font-size: 2.2rem; line-height: 1.6; letter-spacing: -0.05rem; text-align: center; color: #000; padding: 3rem 2rem 0; font-family: 'Noto Sans KR', sans-serif;}
+.sub-cont {margin-top: 7rem; margin-bottom: 15rem;}
+.sub-cont .sub-cont-inner {position: relative;}
+
+
+/* svg */
+/* .svg-wr {position: absolute; z-index: -999; top: 0; transition: none;} */
+.svg-wr {position: absolute; z-index: -999; top: -3rem; opacity: 0; transition: opacity .5s 1s;}
+.svg-wr.on {opacity: 1;}
+.svg-wr svg {height: 60vh; width: 100vw; position: absolute; top: 0; left: 0; transition: none;}
+.svg-wr svg path {stroke-width: 0.5px; fill: transparent; stroke: #aaa; transition: none; opacity: .6;}
+.svg-wr #wave2 {transform: rotate(-180deg) translateY(-20%);}
+.svg-wr #wave2 {transform: none;}
+.svg-box .pc {height: 40rem; position: absolute; top: 0; width: 100vw; overflow: hidden;}
+.svg-box .pc svg {height: 53rem;}
+.svg-box .pc2 {display: none;}
+
+
+/* nav */
+.nav-wr {width: 18.7500vw; padding-left: 4.208vw; display: inline-block; position: absolute; top: 0; left: 0; z-index: 9; text-align: left; transform: translateY(0); padding-bottom: 2rem;}
+.nav-wr.fixed {position: fixed !important; top: 16rem; bottom: auto;}
+/* .nav-wr.end {position: absolute !important; top: auto; bottom: 0; transform: translateY(-30%); transition: all 1s;} */
+/* .nav-wr.end {position: absolute !important; top: auto; bottom: 0; transform: translateY(-20px); transition: all .8s;} */
+/* .nav-wr.end {position: fixed !important; top: auto; bottom: 50vh; transition: top 0.8s;} */
+.nav-wr.end {position: absolute !important; top: auto; bottom: 0; transition: all .8s;}
+.nav-wr .tit {display: none;}
+.nav-wr ul li {padding-bottom: 2.2rem;}
+.nav-wr ul li * {transition: all .3s;}
+.nav-wr ul li a {display: block; width: 100%; font-size: 1.8rem; line-height: 1.4; letter-spacing: 0.03rem; color: #333; font-weight: normal; padding-right: 2rem;}
+.nav-wr ul li a span {font-size: 1.4rem; font-weight: inherit; padding-left: 0.5rem; opacity: .4;}
+.nav-wr ul li a:hover {color: #0567a6; font-weight: bold;}
+.nav-wr ul li a.act {color: #0567a6; font-weight: bold !important;}
+.nav-wr ul li a.target_0 span {display: none;}
+.cont-wr {padding-left: 18.7500vw; width: 100%;}
+.nav-wr ul li.ko a {letter-spacing: -0.045rem; font-weight: 300;}
+.nav-wr ul li.ko a span {font-weight: 300;}
+.nav-wr ul li.ko a.act span {font-weight: bold;}
+
+
+/* dot */
+.dot p:not(.n-d) {position: relative; padding-left: 1rem;} 
+.dot p:not(.n-d):before {content: ''; display: block; position: absolute; width: 0.2rem; height: 0.2rem; top: 1.25rem; left: 0.3rem; background: rgba(102, 102, 102, 0.8); border-radius: 50%;} 

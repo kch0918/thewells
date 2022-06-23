@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="/admin/mainMapper">
+
+	<!-- 업적관리 조회 -->
+	<select id="getAchieve" parameterType="hashmap" resultType="hashmap">
+		select
+			*,DATE_FORMAT(submit_date,'%Y-%m-%d %T') AS submit_date2 
+		from tbl_achive where idx = '1'
+	</select>
+	
+	<!-- 업적관리 삽입 -->
+	<insert id="insAchieve" parameterType="hashmap">
+		insert INTO tbl_achive 
+			(
+		 	   year,	    finance,  	   finance_en, 		 partners,		   team,		  submit_date
+			 )
+		values
+			(
+			  '${year}',  '${finance}',  '${finance_en}',  '${partners}', 	  '${team}',		now() + 0	
+			)
+	</insert>
+	
+	<!-- 매거진 베너 수정 -->
+	<update id="upAchieve" parameterType="hashmap">
+		UPDATE tbl_achive 
+		set
+			year  		 = 	  '${year}',
+			finance  	 = 	  '${finance}',
+			finance_en   = 	  '${finance_en}',
+			partners  	 = 	  '${partners}',
+			team 		 = 	  '${team}',
+			submit_date  = 	   now() + 0
+		where
+			idx = '1'
+	</update>
+	
+</mapper>

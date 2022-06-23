@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="/admin/partnersMapper">
+
+	<!-- 파트너 카테고리 조회 -->
+	<select id="getCateList" parameterType="hashmap" resultType="hashmap">
+		SELECT
+			aa.*,
+			(SELECT COUNT(*) FROM tbl_partners WHERE expo_yn = 'Y'  and cate_idx like CONCAT('%', aa.idx, '%')) AS cate_cnt
+		FROM tbl_partcate aa
+		ORDER BY sort
+	</select>
+	
+	<!-- 파트너 카테고리 수정 -->
+	<update id="upCate" parameterType="hashmap">
+		update tbl_partcate
+			set 
+			cate_nm  	= 	'${cate_kr}',
+			cate_nm_en  = 	'${cate_en}',
+			show_yn  	= 	'${show_yn}',
+			sort 	 	= 	'${sort}',
+			edit_date   = 	now() + 0
+		where
+			idx = '${idx}'
+	</update>
+	
+	<!-- 파트너 카테고리 등록 -->
+	<insert id="insPtnrCate" parameterType="hashmap">
+		insert into tbl_partcate
+			set 
+		idx		 	=    (select idx from (SELECT LPAD(MAX(idx)+1,3,0) as idx FROM tbl_partcate) as temp),
+		cate_nm  	= 	'${cate_kr}',
+		cate_nm_en 	= 	'${cate_en}',
+		show_yn   	= 	'${show_yn}',
+		sort   		=  	(select sort from (SELECT LPAD(MAX(sort)+1,3,0) as sort FROM tbl_partcate) as temp2),   
+		submit_date = 	now()+0,
+		edit_date	= 	now()+0
+	</insert>
+	
+	<!-- 파트너 카테고리 삭제 -->
+	<delete id="delPtnrCate" parameterType="hashmap">
+		delete from tbl_partcate where idx = '${idx}'
+	</delete>
+	
+	<!-- 카테고리 마지막 수정 조회 -->
+	<select id="getOnePtnrEdit" parameterType="hashmap" resultType="hashmap">
+		select DATE_FORMAT(edit_date,'%Y-%m-%d %T') AS edit_date2 from tbl_partcate order by edit_date desc limit 1
+	</select>
+	
+	<!-- 파트너 카테고리 게시판 등록 -->
+	<insert id="insPtnr" parameterType="hashmap">
+		INSERT INTO tbl_partners
+			(
+		 	   part_nm_ko,		  part_nm_en,		 	logo_img, 			logo_img_ori,		 	cate_idx, 		  	  
+		 	   url, 		  	  inv_year, 		 	inv_month,	      	return_yn, 		 	 	corp_nm_ko, 	  	  
+		 	   corp_nm_en,	  	  expo_yn, 	  	 	 	main_expo,	     	submit_date,	     	edit_date,  		order_no 
+			 )
+		values
+			(
+			  '${part_nm_ko}', 	  '${part_nm_en}',	   '${logo_img}',		'${logo_img_ori}',		'${cate_idx}',		 	  
+			  '${url}',     	  '${inv_year}',       '${inv_month}',	 	'${return_yn}',		 	'${corp_nm_ko}', 	  
+			  '${corp_nm_en}',	  '${expo_yn}', 	   '${main_expo}',		 now() + 0,		 	 	 now() + 0,			((select order_no from (SELECT MIN(order_no)-1 as order_no FROM tbl_partners) as temp))
+			 )
+	</insert>
+	
+	<!-- 파트너 카테고리 게시판 수정 -->
+	<update id="upPtnr" parameterType="hashmap">
+		UPDATE tbl_partners 
+		set
+			part_nm_ko 	  = 	'${part_nm_ko}',
+			part_nm_en 	  = 	'${part_nm_en}',
+			logo_img 	  = 	'${logo_img}',
+			logo_img_ori  = 	'${logo_img_ori}',
+			cate_idx 	  =		'${cate_idx}',
+			url   	 	  = 	'${url}',
+			inv_year 	  = 	'${inv_year}',
+			inv_month	  =   	'${inv_month}',
+			return_yn     = 	'${return_yn}',
+			corp_nm_ko 	  = 	'${corp_nm_ko}',
+			corp_nm_en 	  = 	'${corp_nm_en}',
+			expo_yn  	  = 	'${expo_yn}',
+			main_expo 	  = 	'${main_expo}',
+			edit_date  	  = 	 now() + 0 
+		where
+			idx = '${idx}'
+	</update>
+	
+	<!-- 파트너 카테고리 게시판 단일조회 -->
+	<select id="getOneFileList" parameterType="hashmap" resultType="hashmap">
+		select * from tbl_partners where idx = '${idx}'
+	</select>
+	
+	<!--  파트너 카테고리 게시판 리스트 -->
+	<select id="getPtnrList" parameterType="hashmap" resultType="hashmap">
+		SELECT *, get_catenm(aa.idx) AS get_cate_nm FROM tbl_partners aa where 1
+		 <if test="!search_name.equals('')">
+			AND part_nm_ko LIKE '%${search_name}%'
+		</if> 
+		<if test="!cate_idx.equals('')">
+			AND cate_idx LIKE '%${cate_idx}%'
+		</if> 
+		order by order_no asc
+	</select>
+	
+	<!--  파트너 카테고리 게시판 리스트 -->
+	<select id="getPtnrList_detail" parameterType="hashmap" resultType="hashmap">
+		SELECT *, get_catenm(aa.idx) AS get_cate_nm FROM tbl_partners aa where 1
+		<if test="search_type eq 'part_nm_ko'.toString()">
+			AND aa.part_nm_ko LIKE '%${search_name}%'
+		</if> 
+		<if test="search_type eq 'corp_nm_ko'.toString()">
+			AND aa.corp_nm_ko LIKE '%${search_name}%'
+		</if> 
+	 	<if test="!return_yn.equals('')">
+			AND aa.return_yn = '${return_yn}'
+		</if>
+		<if test="!expo_yn.equals('')">
+			AND aa.expo_yn = '${expo_yn}'
+		</if>
+		<if test="!main_yn.equals('')">
+			AND aa.main_expo = '${main_yn}'
+		</if> 
+		AND aa.submit_date BETWEEN '${start_date}00000000' and '${finish_date}99999999'
+		order by order_no asc
+	</select>
+
+	<!-- 파트너 카테고리  갯수 -->
+	<select id="getPtnrCount" parameterType="hashmap" resultType="hashmap">
+		select count(*) as CNT from tbl_partners where 1
+		<if test="!search_name.equals('')">
+			AND part_nm_ko LIKE '%${search_name}%'
+		</if> 
+		<if test="!cate_idx.equals('')">
+			AND cate_idx LIKE '%${cate_idx}%'
+		</if> 
+	</select>
+	
+	<!--  파트너 카테고리 게시판 리스트 -->
+	<select id="getPtnrCount_detail" parameterType="hashmap" resultType="hashmap">
+		select count(*) as CNT from tbl_partners where 1 
+		<if test="search_type eq 'part_nm_ko'.toString()">
+			AND part_nm_ko LIKE '%${search_name}%'
+		</if> 
+		<if test="search_type eq 'corp_nm_ko'.toString()">
+			AND corp_nm_ko LIKE '%${search_name}%'
+		</if> 
+	 	<if test="!return_yn.equals('')">
+			AND return_yn = '${return_yn}'
+		</if>
+		<if test="!expo_yn.equals('')">
+			AND expo_yn = '${expo_yn}'
+		</if>
+		<if test="!main_yn.equals('')">
+			AND main_expo = '${main_yn}'
+		</if> 
+		AND submit_date BETWEEN '${start_date}00000000' and '${finish_date}99999999'
+		order by submit_date desc
+	</select>
+	
+	<!-- 파트너 카테고리 게시판 삭제 -->
+	<delete id="delPtnrList" parameterType="hashmap">
+		delete from tbl_partners where idx in (${idx})
+	</delete>
+	
+	<!-- 파트너 카테고리 게시판 단일조회 -->
+	<select id="getOnePtnrList" parameterType="hashmap" resultType="hashmap">
+		select *,DATE_FORMAT(edit_date,'%Y-%m-%d %T') AS edit_date2 from tbl_partners where idx = '${idx}'
+	</select>
+	
+	<!-- 마지막 수정 조회 -->
+	<select id="getPtnrdateList" parameterType="hashmap" resultType="hashmap">
+		select DATE_FORMAT(edit_date,'%Y-%m-%d %T') AS edit_date2 from tbl_partners order by edit_date desc limit 1
+	</select>
+	
+	<!-- 선택노출 수정  -->
+	<update id="upExpo_sel" parameterType="hashmap">
+		UPDATE tbl_partners 
+		set
+			expo_yn  = 	'${sel_expo}'
+		where
+			idx in (${idx})
+	</update>
+	
+	<!-- 선택노출 수정  -->
+	<update id="upMain_sel" parameterType="hashmap">
+		UPDATE tbl_partners 
+		set
+			main_expo  = 	'${sel_main}'
+		where
+			idx in (${idx})
+	</update>
+	
+	<!-- 선택카테고리 수정  -->
+	<update id="upCate_sel" parameterType="hashmap">
+		UPDATE tbl_partners 
+		set
+			cate_idx  =  '${sel_cate}'
+		where
+			idx in (${idx})
+	</update>
+	
+	<!-- 순서변경  -->
+	<update id="upOrder" parameterType="hashmap">
+		UPDATE  tbl_partners 
+		set
+	 		order_no='${order_no}'
+		where 
+			idx ='${idx}'
+	</update>
+	
+	<!--  메인노출  게시판 리스트 -->
+	<select id="goMainExpo" parameterType="hashmap" resultType="hashmap">
+		SELECT *, get_catenm(aa.idx) AS get_cate_nm FROM tbl_partners aa where main_expo = 'Y' ORDER BY order_no asc
+	</select>
+	
+	<!-- 메인노출  게시판  갯수 -->
+	<select id="goMainCount" parameterType="hashmap" resultType="hashmap">
+		select count(*) as CNT from tbl_partners where main_expo = 'Y'
+	</select>
+	
+	<!-- 순서변경  -->
+	<update id="upOrder_cate" parameterType="hashmap">
+		UPDATE  tbl_partcate 
+		set
+	 		sort='${order_no}'
+		where 
+			idx ='${idx}'
+	</update>
+</mapper>

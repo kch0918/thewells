@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="/web/teamMapper">
+	
+	<!-- 팀카테 조회 -->
+	<select id="getTeamCate" parameterType="hashmap" resultType="hashmap">
+		SELECT
+			aa.*,
+				(SELECT COUNT(*) FROM tbl_team WHERE expo_yn = 'Y'  and  cate_idx like CONCAT('%', aa.idx, '%')) AS cate_cnt
+		FROM tbl_teamcate aa
+		WHERE show_yn = "Y"
+		ORDER BY sort asc
+	</select>
+	
+	<!-- 팀카테 조회 -->
+	<select id="getTeamCate_main" parameterType="hashmap" resultType="hashmap">
+		SELECT cate_nm_en FROM tbl_teamcate WHERE show_yn = "Y"
+	</select>
+	
+	<!-- 팀 단일조회 -->
+	<select id="getTeamdetail" parameterType="hashmap" resultType="hashmap">
+		SELECT *,get_catenm_team(idx) as cate_nm FROM tbl_team where cate_idx like CONCAT('%', ${idx} ,'%') AND expo_yn = 'Y' ORDER BY order_no
+	</select>
+	
+	<!-- 팀 단일조회(영문) -->
+	<select id="getTeamdetail_en" parameterType="hashmap" resultType="hashmap">
+		SELECT *,get_catenm_team_en(idx) as cate_nm FROM tbl_team where cate_idx like CONCAT('%', ${idx} ,'%') AND expo_yn = 'Y' ORDER BY order_no
+	</select>
+	
+	<!-- 팀 세부조회 -->
+	<select id="getTeamInfo" parameterType="hashmap" resultType="hashmap">	
+		SELECT
+			get_catenm_team(idx) as cate_nm,
+			(SELECT team_nm_ko FROM tbl_team WHERE idx=t1.before_idx AND cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y') AS before_nm,
+			(SELECT team_nm_ko FROM tbl_team WHERE idx=t1.after_idx AND cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y') AS after_nm,
+			t1.*
+		FROM 
+		(
+			SELECT
+				case 
+				when aa.idx = ( SELECT MIN(idx) FROM tbl_team WHERE cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y') then ( SELECT max(idx) FROM tbl_team WHERE cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y' )
+				ELSE (SELECT idx FROM tbl_team WHERE idx <![CDATA[<]]> aa.idx and cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y' ORDER BY idx desc LIMIT 1)
+				END AS before_idx, 
+		
+				case
+				when aa.idx = ( SELECT max(idx) FROM tbl_team WHERE cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y' ) then ( SELECT MIN(idx) FROM tbl_team WHERE cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y' )
+				ELSE (SELECT idx FROM tbl_team WHERE idx <![CDATA[>]]> aa.idx and cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y' LIMIT 1)
+				END AS after_idx, 
+			
+				aa.* 
+			
+			FROM tbl_team aa 
+			WHERE idx = '${idx}'
+			
+		) t1
+	</select>
+	
+	<!-- 팀 세부조회(영문)-->
+	<select id="getTeamInfo_en" parameterType="hashmap" resultType="hashmap">
+		SELECT
+			get_catenm_team_en(idx) as cate_nm,
+			(SELECT team_nm_en FROM tbl_team WHERE idx=t1.before_idx AND cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y') AS before_nm,
+			(SELECT team_nm_en FROM tbl_team WHERE idx=t1.after_idx AND cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y') AS after_nm,
+			t1.*
+		FROM 
+		(
+			SELECT
+				case 
+				when aa.idx = ( SELECT MIN(idx) FROM tbl_team WHERE cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y') then ( SELECT max(idx) FROM tbl_team WHERE cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y' )
+				ELSE (SELECT idx FROM tbl_team WHERE idx <![CDATA[<]]> aa.idx and cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y' ORDER BY idx desc LIMIT 1)
+				END AS before_idx, 
+		
+				case
+				when aa.idx = ( SELECT max(idx) FROM tbl_team WHERE cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y' ) then ( SELECT MIN(idx) FROM tbl_team WHERE cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y' )
+				ELSE (SELECT idx FROM tbl_team WHERE idx <![CDATA[>]]> aa.idx and cate_idx LIKE '%${cate_idx}%' AND expo_yn = 'Y' LIMIT 1)
+				END AS after_idx, 
+			
+				aa.* 
+			
+			FROM tbl_team aa 
+			WHERE idx = '${idx}'
+			
+		) t1
+	</select>
+</mapper>

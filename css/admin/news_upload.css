@@ -1,0 +1,195 @@
+/* #ui-datepicker-div .ui-datepicker-header a span */
+#cke_conts .cke_inner .cke_contents {
+	height: 398px !important;
+}
+
+#container.news_upload .contwrap .cont .rt .date-select .date_box > input {
+	width: 213px;
+	padding: 0 33px;
+	cursor: pointer;
+}
+#container.news_upload .contwrap .cont .rt .date-select .date_box {
+	position: relative;
+	width: 213px;
+}
+#container.news_upload .contwrap .cont .rt .date-select .date_box::after {
+    content: '';
+    display: inline-block;
+    background: url(/img/admin/month_icon.png) 0 0 no-repeat;
+    position: absolute;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    transform: translateY(-50%);
+/*     cursor: pointer; */
+    right: 20px;
+}
+#container.news_upload .contwrap .cont .rt .cke_inner {
+	height: 506px;
+}
+#container.news_upload .contwrap .cont .rt .cke_inner .cke_bottom {
+	display: none;
+}
+#container.news_upload .contwrap .cont05 {
+	border-top: 1px solid #f1f1f1;
+}
+#container.news_upload .contwrap .cont05 .rt {
+	padding: 30px 33px !important;
+}
+#container.news_upload .contwrap .cont05 .rt .txtbox > input {
+	width: 40.2%;
+    padding: 15px 30px;
+    border: 1px solid #ececec;
+    font-size: 16px;
+    letter-spacing: -0.8px;
+}  
+#container.news_upload .contwrap .cont .rt .files {
+	padding: 17px 0;
+    display: flex;
+}
+#container.news_upload .contwrap .cont .rt .files .top .upload_name {
+	position: absolute;
+    right: 100%;
+}
+#container.news_upload .contwrap .cont .rt .files .top .addFile {
+	display: inline-block;
+	width: 111px; height: 30px;
+	color: #fff; background: #000;
+	border-radius:15px; margin-right: 22px;
+	
+}
+/* #container.news_upload .contwrap .cont .rt .files .fileLists { */
+/* 	margin: 2px 10px 0; */
+/*     height: 30px; position: relative; */
+/* } */
+/* #container.news_upload .contwrap .cont .rt .files .fileLists > input { */
+/* 	position: absolute; right: 9999999px; */
+/* } */
+/* #container.news_upload .contwrap .cont .rt .files .fileLists > span { */
+/* 	font-size: 12px; color: #aaa; */
+/* 	line-height: 30px; */
+/* 	max-width: 200px; */
+/*     display: inline-block; */
+/*     overflow: hidden; */
+/*     text-overflow: ellipsis; */
+/*     white-space: nowrap; */
+/* } */
+/* #container.news_upload .contwrap .cont .rt .files .fileLists > button { */
+/* 	position: relative; */
+/*     left: 5px; bottom: 5px; */
+/*     background: url(/img/admin/file_del_icon.png) no-repeat; */
+/*     width: 20px; height: 20px; */
+/*     display: inline-block; */
+/* } */
+#container.news_upload .contwrap .cont .rt .files .fileLists .input-file {
+	width: 200px; height: 30px; 
+	overflow: hidden;
+	position: relative;
+	margin: 0 10px;
+}
+#container.news_upload .contwrap .cont .rt .files .fileLists .input-file .fileList {
+	position: absolute; 
+	width: calc(100% - 20px); height: 100%;
+	opacity: 0.0000001;
+	left: 0; top: 0;
+    font-size: 0;
+}
+#container.news_upload .contwrap .cont .rt .files .fileLists .input-file .filename {
+	border:none; padding: 0;
+	width: calc(100% - 20px); height: 100%; 
+	font-size: 12px; color: #aaa;
+}
+#container.news_upload .contwrap .cont .rt .files .fileLists .input-file .delete-btn {
+    width: 20px;
+    height: 30px;
+    background: url(/img/admin/file_del_icon.png) no-repeat;
+    vertical-align: middle;
+}
+#container.news_upload .contwrap .cont .rt .info_txt_box {
+	padding-left: 0 !important;
+}
+#container.news_upload .contwrap .cont .rt .info_txt_box .info_txt {
+	font-size: 16px !important; color: #aaa !important;
+}
+
+#container.news_upload .contwrap .cont07.partname .rt {
+	position: relative;
+	padding-bottom: 33px !important;
+}
+#part_search2 {
+    position: absolute;
+    top: 85px;
+    left: 33px;
+    z-index: 1;
+    width: 275px;
+    padding: 16px 0;
+    background: #fff;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+#part_search2 > li:hover {
+	color: #666;
+}
+#part_search2 > li,
+#part_search2 > option {
+	font-size: 16px;
+	color: #aaa;
+	letter-spacing: -0.8px;
+	padding: 0 30px;
+	cursor: pointer;
+}
+.partname .name_result {
+	width: 360px;
+    height: 55px;
+    border: 1px solid #eee;
+    overflow: hidden;
+    margin-left: 10px;
+}
+.partname .name_result {
+	line-height:55px;
+	padding: 0 30px;
+	font-size: 16px;
+	color: #aaa;
+	position: relative;
+}
+.partname .name_result .del_btn {
+	display: none;
+}
+.partname .name_result.del .del_btn {
+	display: inline-block;
+	position: absolute;
+	right: 30px;
+	background: url(/img/admin/file_del_icon.png) no-repeat;
+	width: 20px;
+    height: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.partname .name_result > li {
+	margin-top: 55px;
+}
+.partname .name_result > option {
+	display: none;
+}
+#container.news_upload .contwrap .partname .txtbox > input {
+	position: relative;
+	z-index: 1;
+	width: 275px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

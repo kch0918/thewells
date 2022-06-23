@@ -1,0 +1,155 @@
+@media screen and (max-width:1440px) {
+	.main p.tit {font-size: 6rem;}
+	
+	.main .sec01 .txt-box .txt {font-size: 2.8rem;}
+
+	.main .sec02 .txt-box {width: 90%;}
+	.main .sec02 .img-box .btn-box-wr {left: 0; bottom: -2.6rem; z-index: 1;}
+	.main .sec02 .img-wr.n1 {display: none;}
+	.main .sec02 .txt-box > .mo-ver {width: 50%;}
+	.main .sec02 .count-box {margin-top: 6rem;}
+	.main .sec02 .count-box li {width: 50%; padding-bottom: 3rem; padding-right: 5rem;}
+	.main .sec02 .count-box li:last-child {padding-right: 5rem;}
+	.main .sec02 .count-box .fir-wr * {font-size: 5.5rem;}
+	
+	.main .sec03 {padding-top: 20rem;}
+	.main .sec03 .flow-box .cont-wr .cont-it img {max-height: 3.5rem;}
+	
+	.main .sec05 .news-wr li {width: calc((100% - 7.979vw) / 3);}
+	.main .sec05 .news-wr li .news-cont .news-tit {font-size: 2.4rem;}
+	.main .sec05 .news-wr li .news-cont .news-txt {-webkit-line-clamp: 5; height: 14.5rem;}
+}
+
+@media screen and (max-width:1280px) {
+	.main p.txt {font-size: 1.9rem;}
+	
+	/* .sec02 .img-wr {opacity: 0.8;} */
+	
+	.main .sec03 .flow-box .cont-wr .cont-it img {max-height: 3rem;}
+	
+	.main .sec04 .right-box {padding-top: 28.5rem; word-break: keep-all; padding: 34.5rem 5vw 0 6.7708vw;}
+	
+	.main .sec05 {padding-top: 17rem;}
+	.main .sec05 .news-wr li .sec-tit {margin-bottom: 1.7rem;}
+	.main .sec05 .news-wr li .news-cont .news-txt {margin-top: 2rem;}
+}
+
+@media screen and (max-width:1024px) {
+	.main p.tit {font-size: 5.5rem;}
+	
+	.main .sec01 .txt-box .tit {font-size: 7rem;}
+	.main .sec01 .txt-box .txt {font-size: 2.4rem;}
+
+	.main .sec02 .inner {padding-top: 25vh; padding: 27vh 10vw 6.2500vw;}
+	.main .sec02 .txt-box {width: 100%;}
+	.main .sec02 .count-box .fir-wr * {font-size: 4.5rem;}
+	.main .sec02 .count-box .fir-wr .unit {font-size: 1.6rem;}
+	.main .sec02 .img-box {right: 10rem;}
+	.main .sec02 .img-box .btn-box-wr {left: 8rem; bottom: -12.9vh;}
+	.main .sec02 .img-box .img-wr.n1 {width: 17rem; margin-top: -2rem;}
+	.main .sec02 .img-box .img-wr.n2 {width: 23rem;}
+	
+	.main .sec03 .btn-box {margin: 2.7rem auto 5rem;}
+	.main .sec03 .flow-box .cont-wr .cont-it {margin: 0 2rem;}
+	.main .sec03 .flow-box .cont-wr .cont-it .txt {font-size: 1.6rem; padding-top: 0.3rem;}
+	
+	.main .sec04 .teamslide {width: calc((50.6vw - 1.5rem) / 2);}
+	.main .sec04 .teamslide.n3 {display: none;}
+	.main .sec04 .teamslide li {height: calc((50.6vw - 1.5rem) / 2);}
+	.main .sec04 .teamslide li:hover {background: #fff;}
+	.main .sec04 .teamslide li .txt-wr .team {font-size: 1.2vw; line-height: 1.2;}
+	.main .sec04 .teamslide li .txt-wr .name {font-size: 1.6vw;}
+	.main .sec04 .right-box {padding-top: 26rem;}
+	.main .sec04 .right-box .btn-box {margin-top: 3rem;}
+	
+	.main .sec05::after {opacity: .3;}
+	.main .sec05 .inner {padding: 0 6vw 11.7188vw;}
+	.main .sec05 .news-wr li .news-cont .news-tit {font-size: 2rem; height: 6rem;}
+	.main .sec05 .news-wr li .news-cont .news-txt {font-size: 1.6rem; margin-bottom: 6rem; height: 7.5rem; -webkit-line-clamp: 3;}
+	.main .sec05 .news-wr li.out-link .sec-tit::after {width: 3rem; height: 3rem; background-size: 1.2rem;}
+}
+
+/* 모바일 */
+@media screen and (max-width:768px) {
+	.main .section:not(.sec01) .inner {height: auto; position: absolute !important; top: 50%; transform: translateY(-50%); padding-top: 0 !important; padding-bottom: 0 !important; left: 0; right: 0;}
+	.main p.tit {font-size: 3.5rem;}
+	.main p.txt {font-size: 1.2rem; line-height: 1.6; padding: 0;}
+	.main p.txt.n1 {padding-top: 1.5rem;}
+	
+	.main .sec01 .txt-box {padding: 0 2rem;}
+	.main .sec01 .txt-box .tit {font-size: 4.3rem; line-height: 1.2;}
+	.main .sec01 .txt-box .txt {font-size: 1.5rem; padding-top: 2rem;}
+	
+	.main .sec02 .inner {padding: 12vh 0 6.2500vw;}
+	.main .sec02 .txt-box .t-wr {padding: 0 2rem;}
+	.main .sec02 .txt-box .t-wr .tit.mo {display: block !important;}
+	.main .sec02 .txt-box .btn-box-wr {padding: 3.5vh 2rem 0;}
+	.main .sec02 .txt-box > .mo-ver {width: 100%;}
+	.main .sec02 .txt-box .mo-ver {padding: 6vh 0 0;}
+	.main .sec02 .txt-box .mo-ver > * {width: 50%;}
+	.main .sec02 .txt-box .mo-ver > .img-wr {float: left; padding-right: 2rem; max-width: 25rem;}
+	.main .sec02 .txt-box .mo-ver > .count-box {float: right; padding: 0 2rem; margin: 0; min-width: calc(100% - 25rem);}
+	.main .sec02 .count-box li {width: 100%; padding: 0; margin-bottom: 1rem;}
+	.main .sec02 .count-box li:last-child {padding: 0;}
+	.main .sec02 .count-box .fir-wr {padding-bottom: 0.6rem; margin-bottom: 0.7rem;}
+	.main .sec02 .count-box .fir-wr * {font-size: 3.2rem;}
+	.main .sec02 .count-box .fir-wr .unit {font-size: 1.2rem; padding-left: 1px;}
+	.main .sec02 .count-box .sub-txt {font-size: 1.2rem;}
+
+	.main .sec03 {padding-top: 15vh;}
+	.main .sec03 .svg-wr {top: 0;}
+	.main .sec03 .svg-wr svg {/* top: 100px; */}
+	.main .sec03 .btn-box-wr {width: auto; padding-bottom: 4rem;}
+	.main .sec03 .btn-box.hover {width: auto; max-width: 100%; margin: 0;}
+	.main .sec03 .txt-box {padding: 0 2rem; word-break: keep-all;}
+	.main .sec03 .txt-box .tit.mo {display: block !important;}
+	.main .sec03 .flow-box .cont-wr {height: 10vw; width: 100vw;}
+	.main .sec03 .flow-box .cont-wr .cont-it {line-height: 10vw; margin: 0;}
+	.main .sec03 .flow-box .cont-wr .cont-it img {opacity: 1; max-height: 2.8rem; max-width: 14rem; padding: 0 2rem;}
+	.main .sec03 .flow-box .cont-wr .cont-it .txt {display: none;}
+	
+	.main .sec04 .inner {padding: 0 2rem;}
+	.main .sec04 .btn-box-wr {padding-bottom: 1.5rem;}
+	.main .sec04 .right-box {padding: 0; width: 100%; height: auto; overflow: visible; padding-top: 15vw;}
+	.main .sec04 .right-box::after {width: 110vw; height: 110vw; top: 0; right: 0;}
+	.main .sec04 .right-box .btn-box {margin-top: 0;}
+	.main .sec04 .left-box {width: 100%; height: auto;}
+	.main .sec04 .teamslide {width: calc((100% - 1.2rem) / 2);}
+	.main .sec04 .teamslide.n1 {padding-top: 4rem; height: calc(50vh - 4rem);}
+	.main .sec04 .teamslide .slick-list {height: 50vh !important;}
+	.main .sec04 .teamslide li {padding: 1.5rem 1.5rem 0; height: calc(50vw - 2rem - 10px);}
+	.main .sec04 .teamslide li .txt-wr .team {color: #666; font-size: 1rem;}
+	.main .sec04 .teamslide li .txt-wr .name {color: #000; font-size: 1.2rem;}
+	.main .sec04 .teamslide li .img-wr {padding: 0 1.5rem;}
+	
+	.main .sec05 {padding: 0;}
+	.main .sec05::after {height: 270vh; opacity: 0.23;}
+	.main .sec05 .inner {padding: 0 2rem;}
+	.main .sec05 .btn-box-wr {position: relative; top: auto; left: 45vw; transform: translateX(-50%);}
+	.main .sec05 .news-wr {margin-top: 3rem; width: calc(100vw - 2rem); /* white-space: nowrap; */}
+	.main .sec05 .news-wr .slick-list {margin-left: -0.45rem;}
+	.main .sec05 .news-wr li {margin-right: 0.9rem;}
+/* 	.main .sec05 .news-wr li:last-child {margin-right: 1rem} */
+	.main .sec05 .news-wr li a:not(.to-out-link) {padding: 2.3rem 1.5rem 3rem 2rem;}
+	.main .sec05 .news-wr li .sec-tit {font-size: 1.1rem; margin-bottom: 3rem;}
+	.main .sec05 .news-wr li.out-link .to-out-link {width: 2.4rem; height: 2.4rem; background-size: 1rem; top: 2rem; right: 2rem;}
+	.main .sec05 .news-wr li .news-cont {white-space: normal;}
+	.main .sec05 .news-wr li .news-cont .news-tit {font-size: 1.5rem; height: 4.5rem;}
+	.main .sec05 .news-wr li .news-cont .news-txt {font-size: 1.2rem; margin-bottom: 7rem; height: 9.6rem; -webkit-line-clamp: 5;}
+	.main .sec05 .news-wr li .news-cont .news-date {font-size: 1.2rem; padding-top: 1.5rem;}
+	
+}
+
+@media screen and (max-width:500px) {
+	.main .section:not(.sec01) .inner {top: calc(50% + 25px);}
+	
+/* 	.main .sec03 .svg-wr {top: 13rem;} */
+	.main .sec03 .flow-box .cont-wr {height: 14vw;}
+	.main .sec03 .flow-box .cont-wr .cont-it {line-height: 14vw;}
+	
+}
+@media screen and (max-width:330px) {
+	.main .sec02 .count-box .fir-wr * {font-size: 2.6rem;}
+	.main .sec03 .btn-box-wr {padding-bottom: 2rem;}
+	.main .sec03 .cont-wr + .cont-wr {margin-top: 1rem;}
+}

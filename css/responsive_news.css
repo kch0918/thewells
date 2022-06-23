@@ -1,0 +1,59 @@
+@media screen and (max-width:1440px) {
+/* 	#news .cont-wr {max-width: 106rem; padding-left: 25vw;} */
+	#news.detail .cont-wr {padding-left: 3rem;}
+}
+
+@media screen and (max-width:1280px) {
+/* 	#news .cont-wr {max-width: 106rem; padding-left: 25vw;} */
+	#news.detail .cont-wr {padding-left: 3rem;}
+
+	#news .search-wr .per-wr {width: 100%;}
+	#news .search-wr .bar-wr {width: 100%;}
+	#news .search-wr input {width: calc(50% - 1.3rem);}
+	#news .search-wr input + em {width: 2.6rem; display: inline-block;}
+	#news .search-wr .per-wr input:last-child {margin-right: 0;}	
+}
+
+/* 모바일 */
+@media screen and (max-width:768px) {
+	#news .list-wr {margin-top: 2.5rem; margin-bottom: 3rem; position: relative;}
+	#news .list-wr tr {position: relative; width: 100%; display: block;}
+	#news .list-wr tr th {font-size: 0; padding: 0;}
+/* 	#news .list-wr tr td {padding: 5rem 0 2rem; display: inline-block;} */
+	#news .list-wr tr td {padding: 2.3rem 0; width: 20%;}
+	#news .list-wr tr td.num {display: none;}
+	#news .list-wr tr td.cate {min-width: 7rem;}
+	#news .list-wr tr td.cate span {font-size: 1rem; letter-spacing: normal; padding: .5rem 1rem; vertical-align: middle; border-radius: 1.3rem; line-height: 1.1; display: inline-block;}
+	#news .list-wr tr td.tit {font-size: 1.2rem; font-weight: 300; text-indent: 0; padding: 0; width: 100%; overflow: hidden; text-overflow: ellipsis; max-width: 10rem; padding-right: 1.2rem; padding-left: 1.3rem;}
+/* 	#news .list-wr tr td.tit {text-indent: 0; padding: 0; position: relative; font-size: 0;} */
+/* 	#news .list-wr tr td.tit span {font-size: 1.2rem; font-weight: 300; text-indent: 0; padding: 0; position: absolute; top: 0; left: -3.7rem; width: calc(100vw - 4rem); line-height: 8.2rem; transform: translateY(-90%);} */
+	#news .list-wr tr td.date {font-size: 1rem;}
+	#news .list-wr tr.fixed-top .tit {font-weight: 500;}
+	
+	#news div.detail-wr {font-size: 1.2rem; line-height: 1.6; letter-spacing: -.03rem;}
+	#news .cont-wr {padding: 0 2rem; margin-top: 0;}
+	#news .tit-box {padding: 0 0 2rem;}
+	#news .tit-box .tit {font-size: 1.5rem;	float: none; letter-spacing: -0.03rem;}
+	#news .tit-box .date {font-size: 1.1rem; float: none; line-height: 1; padding-top: 1rem;}
+	#news .link-box {padding: 0 0 1.3rem;}
+	#news .link-box ul li {margin-bottom: 0;}
+	#news .link-box ul li .tit {padding-top: 1rem; display: block; font-weight: normal; width: 100%;}
+	#news .attach span.txt {width: 100%; display: inline;}
+	#news .attach span.txt a {margin-right: 1rem;}
+	#news .cont-box {padding: 3rem 0;}
+	#news .cont-box * {font-size: 1.2rem; line-height: 1.5; letter-spacing: -0.03rem;}
+	#news .nav-box ul li a {padding: 0.3rem 0 1.3rem; width: 100%;}
+	#news .nav-box ul li .tit {padding-top: 1.3rem; display: block; font-weight: normal;}
+	
+	#news .btn-box-wr {padding-top: 3rem;}
+	#news .btn-box-wr .btn-box::after {left: 2.2rem;}
+}
+
+@media screen and (max-width:500px) {
+}
+
+@media screen and (max-width:430px) {
+}
+
+@media screen and (max-width:320px) {
+}
